@@ -1,0 +1,14 @@
+[
+  {"id": 1, "name": "Pro Match Football", "cat": "Football", "price": 12.99, "img": "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&h=600&fit=crop&q=80", "desc": "High-quality football.", "available": true},
+  {"id": 2, "name": "English Willow Cricket Bat", "cat": "Cricket", "price": 45.00, "img": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&h=600&fit=crop&q=80", "desc": "Premium cricket bat.", "available": true},
+  {"id": 3, "name": "Official Basketball", "cat": "Basketball", "price": 24.99, "img": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=600&fit=crop&q=80", "desc": "Official basketball.", "available": true},
+  {"id": 4, "name": "Pro Volleyball", "cat": "Volleyball", "price": 18.99, "img": "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&h=600&fit=crop&q=80", "desc": "Professional volleyball.", "available": true},
+  {"id": 5, "name": "Tennis Racket Pro", "cat": "Tennis", "price": 65.00, "img": "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=600&h=600&fit=crop&q=80", "desc": "Tennis racket.", "available": true},
+  {"id": 6, "name": "Badminton Racket Set", "cat": "Badminton", "price": 32.00, "img": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&h=600&fit=crop&q=80", "desc": "Badminton set.", "available": true},
+  {"id": 7, "name": "Goalkeeper Gloves", "cat": "Football", "price": 25.00, "img": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=600&fit=crop&q=80", "desc": "Goalkeeper gloves.", "available": true},
+  {"id": 8, "name": "Boxing Gloves Pro", "cat": "Boxing", "price": 35.00, "img": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&h=600&fit=crop&q=80", "desc": "Boxing gloves.", "available": true},
+  {"id": 9, "name": "Cricket Kit Bag", "cat": "Cricket", "price": 55.00, "img": "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=600&h=600&fit=crop&q=80", "desc": "Cricket kit bag.", "available": true},
+  {"id": 10, "name": "Tennis Ball Pack", "cat": "Tennis", "price": 8.99, "img": "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=600&h=600&fit=crop&q=80", "desc": "Tennis balls.", "available": true},
+  {"id": 11, "name": "Gym Dumbbell Set", "cat": "Fitness", "price": 89.00, "img": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=600&fit=crop&q=80", "desc": "Dumbbell set.", "available": true},
+  {"id": 12, "name": "Skipping Rope Pro", "cat": "Fitness", "price": 12.00, "img": "https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=600&h=600&fit=crop&q=80", "desc": "Skipping rope.", "available": true}
+]
