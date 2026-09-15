@@ -275,7 +275,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 .about-hero-image:hover{transform:perspective(1000px) rotateY(0deg)}
 .about-hero-image img{width:100%;height:420px;object-fit:cover;display:block}
 
-/* Timeline Section */
 .timeline-section{background:#F4F6F7;padding:80px 24px 60px;position:relative}
 .timeline-section .container{position:relative}
 .timeline-header{text-align:center;margin-bottom:60px}
@@ -305,14 +304,10 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 }
 .timeline-item:nth-child(odd) .timeline-dot{right:-9px}
 .timeline-item:nth-child(even) .timeline-dot{left:-9px}
-.timeline-year{
-  font-family:'Bebas Neue';font-size:2rem;color:var(--sky);
-  line-height:1;margin-bottom:6px;letter-spacing:1px;
-}
+.timeline-year{font-family:'Bebas Neue';font-size:2rem;color:var(--sky);line-height:1;margin-bottom:6px;letter-spacing:1px}
 .timeline-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
 .timeline-desc{font-size:.82rem;color:#718096;line-height:1.7}
 
-/* Values Grid */
 .values-section{background:#fff;padding:80px 24px}
 .values-header{text-align:center;margin-bottom:50px}
 .values-header .label{font-size:.7rem;letter-spacing:4px;color:var(--sky);font-weight:700;text-transform:uppercase;margin-bottom:10px;display:inline-block}
@@ -344,7 +339,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 .value-card h4{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:10px}
 .value-card p{font-size:.85rem;color:#718096;line-height:1.7}
 
-/* Promise Section */
 .promise-section{
   background:linear-gradient(135deg,#0B2545 0%,#143A5C 50%,#1B4F72 100%);
   color:#fff;padding:80px 24px;position:relative;overflow:hidden;
@@ -358,10 +352,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 .promise-content h2{font-family:'Bebas Neue';font-size:2.8rem;line-height:1.1;margin-bottom:20px;letter-spacing:1px}
 .promise-content h2 .accent{color:var(--sky)}
 .promise-content p{color:rgba(255,255,255,.8);font-size:1rem;line-height:1.9;max-width:720px;margin:0 auto 30px}
-.promise-signature{
-  font-family:'Dancing Script',cursive;font-size:2rem;
-  color:var(--sky);margin-top:30px;font-style:italic;
-}
+.promise-signature{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--sky);margin-top:30px;font-style:italic}
 .promise-signature small{display:block;font-family:'Poppins';font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:2px;margin-top:6px;font-style:normal}
 
 .why-wrap{
@@ -587,6 +578,21 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   50%{transform:scale(1.15);opacity:.5}
 }
 .music-btn i{position:relative;z-index:1;pointer-events:none}
+.music-btn.show-hint::after{
+  content:'Click anywhere to play music 🎵';
+  position:absolute;
+  bottom:64px;right:0;
+  background:var(--navy);color:#fff;
+  font-size:.7rem;font-weight:600;
+  padding:8px 14px;border-radius:8px;
+  white-space:nowrap;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  animation:hintBounce 2s ease-in-out infinite;
+}
+@keyframes hintBounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
 
 .inner-header{
   margin-top:78px;padding:70px 24px 60px;
@@ -1132,10 +1138,9 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   </section>
 </div>
 
-<!-- ================= ABOUT PAGE - UNIQUE LAYOUT ================= -->
+<!-- ================= ABOUT PAGE ================= -->
 <div class="page" id="page-about">
 
-  <!-- Hero Strip -->
   <section class="about-hero-strip">
     <div class="about-hero-content">
       <div class="about-hero-text">
@@ -1156,7 +1161,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     </div>
   </section>
 
-  <!-- Timeline -->
   <section class="timeline-section">
     <div class="container">
       <div class="timeline-header">
@@ -1205,7 +1209,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     </div>
   </section>
 
-  <!-- Values -->
   <section class="values-section">
     <div class="values-header">
       <span class="label">What We Stand For</span>
@@ -1245,7 +1248,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     </div>
   </section>
 
-  <!-- Promise -->
   <section class="promise-section">
     <div class="promise-content">
       <span class="label">Our Promise</span>
@@ -1259,7 +1261,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     </div>
   </section>
 
-  <!-- Location Info -->
   <section class="container" style="padding:60px 24px">
     <div class="about-stats-mid" style="max-width:800px;margin:0 auto;grid-template-columns:repeat(3,1fr)">
       <div class="stat-box" style="text-align:center">
@@ -1660,7 +1661,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 </audio>
 
 <!-- MUSIC TOGGLE BUTTON -->
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Music ON — Click to turn OFF" aria-label="Toggle Music">
+<button class="music-btn" id="musicBtn" onclick="event.stopPropagation();toggleMusic()" title="Music ON — Click to turn OFF" aria-label="Toggle Music">
   <i class="fas fa-volume-up" id="musicIcon"></i>
 </button>
 
@@ -2054,7 +2055,7 @@ function showToast(msg, err=false){
 }
 
 /* ============================================================
-   BACKGROUND MUSIC — REMEMBERS USER PREFERENCE
+   BACKGROUND MUSIC — ANY CLICK ON PAGE STARTS MUSIC
 ============================================================ */
 let bgMusic, musicBtn, musicIcon;
 let musicStarted = false;
@@ -2063,10 +2064,16 @@ function updateMusicIcon(){
   if(!bgMusic || !musicIcon) return;
   if(bgMusic.paused){
     musicIcon.className = 'fas fa-volume-mute';
-    if(musicBtn){ musicBtn.classList.remove('playing'); musicBtn.title='Music OFF — Click to turn ON'; }
+    if(musicBtn){
+      musicBtn.classList.remove('playing');
+      musicBtn.title = 'Music OFF — Click to turn ON';
+    }
   } else {
     musicIcon.className = 'fas fa-volume-up';
-    if(musicBtn){ musicBtn.classList.add('playing'); musicBtn.title='Music ON — Click to turn OFF'; }
+    if(musicBtn){
+      musicBtn.classList.add('playing');
+      musicBtn.title = 'Music ON — Click to turn OFF';
+    }
   }
 }
 
@@ -2077,8 +2084,9 @@ function playMusic(){
     musicStarted = true;
     updateMusicIcon();
     localStorage.setItem('imperialMusic', 'on');
+    if(musicBtn) musicBtn.classList.remove('show-hint');
   }).catch(err=>{
-    console.log('Autoplay blocked — waiting for user interaction');
+    console.log('Autoplay blocked:', err);
   });
 }
 
@@ -2095,14 +2103,27 @@ function toggleMusic(){
   }
 }
 
-function autoStartMusic(){
-  if(localStorage.getItem('imperialMusic') === 'off') return;
-  if(!musicStarted){ playMusic(); }
-  document.removeEventListener('click', autoStartMusic);
-  document.removeEventListener('scroll', autoStartMusic);
-  document.removeEventListener('keydown', autoStartMusic);
-  document.removeEventListener('touchstart', autoStartMusic);
-  document.removeEventListener('mousemove', autoStartMusic);
+/* Har click/scroll/touch par music start karo */
+function startMusicOnAnyClick(e){
+  if(localStorage.getItem('imperialMusic') === 'off'){
+    removeAllMusicListeners();
+    return;
+  }
+  if(e && e.target && e.target.closest && e.target.closest('#musicBtn')) return;
+  if(musicStarted){
+    removeAllMusicListeners();
+    return;
+  }
+  playMusic();
+}
+
+function removeAllMusicListeners(){
+  document.removeEventListener('click', startMusicOnAnyClick);
+  document.removeEventListener('scroll', startMusicOnAnyClick);
+  document.removeEventListener('keydown', startMusicOnAnyClick);
+  document.removeEventListener('touchstart', startMusicOnAnyClick);
+  document.removeEventListener('mousemove', startMusicOnAnyClick);
+  document.removeEventListener('touchmove', startMusicOnAnyClick);
 }
 
 function initMusic(){
@@ -2125,11 +2146,13 @@ function initMusic(){
     updateMusicIcon();
     localStorage.setItem('imperialMusic', 'on');
   }).catch(()=>{
-    document.addEventListener('click', autoStartMusic);
-    document.addEventListener('scroll', autoStartMusic);
-    document.addEventListener('keydown', autoStartMusic);
-    document.addEventListener('touchstart', autoStartMusic);
-    document.addEventListener('mousemove', autoStartMusic, {once:true});
+    document.addEventListener('click', startMusicOnAnyClick);
+    document.addEventListener('scroll', startMusicOnAnyClick, {passive:true});
+    document.addEventListener('keydown', startMusicOnAnyClick);
+    document.addEventListener('touchstart', startMusicOnAnyClick, {passive:true});
+    document.addEventListener('touchmove', startMusicOnAnyClick, {passive:true});
+    document.addEventListener('mousemove', startMusicOnAnyClick, {passive:true});
+    if(musicBtn) musicBtn.classList.add('show-hint');
   });
 }
 
