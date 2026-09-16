@@ -6,6 +6,9 @@
 <title>Imperial Enterprises State Co - Premium Sports Goods</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="shortcut icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -127,16 +130,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 .btn-ghost:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
 .btn-outline{background:transparent;color:var(--navy);border:1.5px solid rgba(11,37,69,.15)}
 .btn-outline:hover{border-color:var(--sky);color:var(--sky);transform:translateY(-3px)}
-.btn-play{
-  background:#fff;color:var(--navy);border:1.5px solid rgba(255,255,255,.3);
-  padding:13px 24px;
-}
-.btn-play:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
-.btn-play i{
-  width:26px;height:26px;border-radius:50%;background:var(--sky);
-  color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;
-}
 .hero-features-inline{
   display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
   padding-top:26px;border-top:1px solid rgba(255,255,255,.15);
@@ -233,7 +226,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   font-style:italic;text-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
-/* ============ ABOUT PAGE - UNIQUE LAYOUT ============ */
 .about-hero-strip{
   background:linear-gradient(120deg,#0B2545 0%,#1B4F72 60%,#2E86C1 100%);
   color:#fff;padding:80px 24px 100px;
@@ -568,48 +560,29 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 }
 .music-btn:hover{transform:scale(1.1) translateY(-3px);box-shadow:0 15px 40px rgba(11,37,69,.5)}
 .music-btn.playing{background:linear-gradient(135deg,#2E86C1,#4CAF50)}
-.music-btn.playing::before{
-  content:'';position:absolute;inset:-4px;border-radius:50%;
-  border:2px solid rgba(46,134,193,.5);
-  animation:musicPulse 1.5s ease-in-out infinite;
-}
-@keyframes musicPulse{
-  0%,100%{transform:scale(1);opacity:1}
-  50%{transform:scale(1.15);opacity:.5}
-}
 .music-btn i{position:relative;z-index:1;pointer-events:none}
-.music-btn.show-hint::after{
-  content:'Click anywhere to play music 🎵';
-  position:absolute;
-  bottom:64px;right:0;
-  background:var(--navy);color:#fff;
-  font-size:.7rem;font-weight:600;
-  padding:8px 14px;border-radius:8px;
-  white-space:nowrap;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
-  animation:hintBounce 2s ease-in-out infinite;
-}
-@keyframes hintBounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
-}
 
+/* ============ INNER HEADER WITH BACKGROUND PHOTO ============ */
 .inner-header{
-  margin-top:78px;padding:70px 24px 60px;
-  background:linear-gradient(120deg,#0B2545 0%,#1B4F72 60%,#2E86C1 100%);
+  margin-top:78px;padding:100px 24px 80px;
+  background:linear-gradient(120deg,rgba(11,37,69,.85) 0%,rgba(27,79,114,.8) 60%,rgba(46,134,193,.75) 100%);
   color:#fff;text-align:center;position:relative;overflow:hidden;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 }
 .inner-header::before{
-  content:'';position:absolute;top:-50px;right:-50px;width:300px;height:300px;
-  background:radial-gradient(circle,rgba(46,134,193,.3),transparent 70%);
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(11,37,69,.75),rgba(46,134,193,.5));
+  z-index:1;
 }
+.inner-header h1{position:relative;font-family:'Bebas Neue';font-size:3.4rem;letter-spacing:1px;margin-bottom:6px;color:#fff;z-index:2;text-shadow:0 4px 20px rgba(0,0,0,.6)}
+.inner-header p{position:relative;color:rgba(255,255,255,.9);font-size:.9rem;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 .inner-header::after{
   content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath fill='%23F4F6F7' d='M0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E") no-repeat;
-  background-size:100% 100%;pointer-events:none;
+  background-size:100% 100%;pointer-events:none;z-index:3;
 }
-.inner-header h1{position:relative;font-family:'Bebas Neue';font-size:3.2rem;letter-spacing:1px;margin-bottom:6px;color:#fff}
-.inner-header p{position:relative;color:rgba(255,255,255,.75);font-size:.88rem}
 
 .products-page-layout{display:grid;grid-template-columns:230px 1fr;gap:28px;padding:40px 0}
 .sidebar-filters{background:#fff;border-radius:12px;padding:22px;border:1px solid rgba(11,37,69,.06);height:fit-content;position:sticky;top:90px}
@@ -660,30 +633,181 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 .service-card h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:8px}
 .service-card p{font-size:.8rem;color:#718096;line-height:1.7}
 
-.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.cert-card{background:#fff;border-radius:12px;padding:26px;border:1px solid rgba(11,37,69,.06);text-align:center;transition:.35s}
-.cert-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(11,37,69,.1);border-color:var(--sky)}
-.cert-card img{width:80px;height:80px;object-fit:contain;margin:0 auto 14px}
-.cert-card h4{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-.cert-card p{font-size:.72rem;color:#718096}
-.cert-banner{background:linear-gradient(135deg,#0B2545,#1B4F72);color:#fff;border-radius:14px;padding:30px;text-align:center;margin-top:30px}
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto}
+.cert-card{
+  background:#fff;border-radius:16px;padding:24px;
+  border:1px solid rgba(11,37,69,.08);
+  text-align:center;transition:.35s;cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.cert-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(11,37,69,.12);border-color:var(--sky)}
+.cert-card .cert-img-wrap{
+  width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;
+  background:#F8FAFC;border:1px solid rgba(11,37,69,.06);
+  margin-bottom:16px;position:relative;
+}
+.cert-card .cert-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:.5s}
+.cert-card:hover .cert-img-wrap img{transform:scale(1.03)}
+.cert-card .cert-img-wrap::after{
+  content:'🔍 Click to view full size';
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(11,37,69,.85));
+  color:#fff;font-size:.7rem;font-weight:600;
+  padding:20px 12px 10px;text-align:center;
+  opacity:0;transition:.3s;
+}
+.cert-card:hover .cert-img-wrap::after{opacity:1}
+.cert-card h4{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.cert-card p{font-size:.78rem;color:#718096}
+.cert-banner{background:linear-gradient(135deg,#0B2545,#1B4F72);color:#fff;border-radius:14px;padding:30px;text-align:center;margin-top:36px}
 .cert-banner h3{font-family:'Bebas Neue';font-size:1.7rem;margin-bottom:6px;letter-spacing:.5px}
 .cert-banner p{font-size:.85rem;color:rgba(255,255,255,.8)}
 
-.blog-grid{display:grid;grid-template-columns:2fr 1fr;gap:30px}
-.blog-main{display:flex;flex-direction:column;gap:20px}
-.blog-feature{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(11,37,69,.06)}
-.blog-feature img{width:100%;height:280px;object-fit:cover;display:block}
-.blog-feature .bf-info{padding:22px}
-.blog-feature h3{font-family:'Poppins';font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.3}
-.blog-feature p{font-size:.85rem;color:#718096;line-height:1.7;margin-bottom:10px}
-.blog-meta{font-size:.72rem;color:var(--sky);font-weight:600;margin-bottom:8px;letter-spacing:1px}
-.blog-side{display:flex;flex-direction:column;gap:14px}
-.blog-mini{background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(11,37,69,.06);display:flex;gap:12px;transition:.3s;cursor:pointer}
-.blog-mini:hover{transform:translateX(4px);border-color:var(--sky)}
-.blog-mini img{width:70px;height:70px;border-radius:10px;object-fit:cover;flex-shrink:0}
-.blog-mini h4{font-size:.82rem;color:var(--navy);font-weight:600;margin-bottom:4px;line-height:1.4}
-.blog-mini .date{font-size:.68rem;color:#999}
+.cert-lightbox{
+  position:fixed;inset:0;z-index:99999;
+  background:rgba(11,37,69,.96);
+  backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;
+  padding:30px;cursor:zoom-out;
+  animation:lightboxIn .3s ease;
+}
+.cert-lightbox.show{display:flex}
+@keyframes lightboxIn{from{opacity:0}to{opacity:1}}
+.cert-lightbox img{
+  max-width:90vw;max-height:88vh;width:auto;height:auto;
+  border-radius:12px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  animation:certZoom .4s ease;
+}
+@keyframes certZoom{
+  from{transform:scale(.85);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.cert-lightbox .close-btn{
+  position:absolute;top:24px;right:24px;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.15);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;cursor:pointer;transition:.3s;border:none;
+}
+.cert-lightbox .close-btn:hover{background:#DC3545;transform:rotate(90deg)}
+.cert-lightbox .hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.6);font-size:.8rem;
+}
+
+/* BLOG */
+.blog-intro{
+  max-width:800px;margin:0 auto 40px;text-align:center;
+  color:#718096;font-size:.95rem;line-height:1.9;
+}
+.blog-grid-page{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  margin-bottom:50px;
+}
+.blog-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(11,37,69,.06);
+  transition:.35s;cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.blog-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(11,37,69,.12);border-color:var(--sky)}
+.blog-card .bc-img{
+  width:100%;aspect-ratio:16/10;overflow:hidden;background:var(--light);
+}
+.blog-card .bc-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:.5s;display:block}
+.blog-card:hover .bc-img img{transform:scale(1.08)}
+.blog-card .bc-info{padding:22px;flex:1;display:flex;flex-direction:column}
+.blog-card .bc-meta{
+  display:flex;align-items:center;gap:10px;
+  font-size:.7rem;color:#999;margin-bottom:10px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.blog-card .bc-meta i{color:var(--sky);font-size:.75rem}
+.blog-card h3{
+  font-family:'Poppins';font-size:1.05rem;font-weight:700;
+  color:var(--navy);line-height:1.35;margin-bottom:10px;
+  transition:.3s;
+}
+.blog-card:hover h3{color:var(--sky)}
+.blog-card p{
+  font-size:.82rem;color:#718096;line-height:1.7;
+  margin-bottom:16px;flex:1;
+}
+.blog-card .bc-read{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--sky);font-size:.82rem;font-weight:600;
+  margin-top:auto;
+}
+.blog-card .bc-read i{transition:.3s}
+.blog-card:hover .bc-read i{transform:translateX(5px)}
+
+.blog-single{
+  background:#fff;border-radius:20px;overflow:hidden;
+  border:1px solid rgba(11,37,69,.06);
+  box-shadow:0 15px 40px rgba(11,37,69,.06);
+  margin-bottom:40px;
+}
+.blog-single .bs-hero{
+  width:100%;height:380px;overflow:hidden;background:var(--light);
+}
+.blog-single .bs-hero img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-single .bs-content{padding:44px}
+.blog-single .bs-meta{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  font-size:.78rem;color:#999;margin-bottom:18px;
+}
+.blog-single .bs-meta span{display:flex;align-items:center;gap:6px}
+.blog-single .bs-meta i{color:var(--sky)}
+.blog-single h1{
+  font-family:'Poppins';font-size:2.2rem;font-weight:800;
+  color:var(--navy);line-height:1.2;margin-bottom:20px;
+}
+.blog-single .bs-body{color:#4A5568;font-size:1rem;line-height:1.9}
+.blog-single .bs-body p{margin-bottom:20px}
+.blog-single .bs-body h2{
+  font-family:'Poppins';font-size:1.4rem;font-weight:700;
+  color:var(--navy);margin:32px 0 14px;
+}
+.blog-single .bs-body h3{
+  font-family:'Poppins';font-size:1.1rem;font-weight:700;
+  color:var(--navy);margin:24px 0 12px;
+}
+.blog-single .bs-body ul{
+  margin:0 0 20px 24px;list-style:disc;
+}
+.blog-single .bs-body ul li{margin-bottom:8px}
+.blog-single .bs-body blockquote{
+  border-left:4px solid var(--sky);
+  background:#F8FAFC;padding:18px 22px;
+  border-radius:0 12px 12px 0;
+  font-style:italic;color:#4A5568;
+  margin:24px 0;
+}
+.blog-single .bs-share{
+  display:flex;align-items:center;gap:12px;
+  margin-top:36px;padding-top:24px;
+  border-top:1px solid rgba(11,37,69,.06);
+  flex-wrap:wrap;
+}
+.blog-single .bs-share .label{
+  font-size:.85rem;font-weight:600;color:var(--navy);
+}
+.blog-single .bs-share a{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--light);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;transition:.3s;
+}
+.blog-single .bs-share a:hover{background:var(--sky);color:#fff;transform:translateY(-3px)}
+.blog-back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--light);color:var(--navy);
+  padding:12px 24px;border-radius:50px;
+  font-size:.85rem;font-weight:600;
+  transition:.3s;margin-bottom:24px;
+}
+.blog-back-btn:hover{background:var(--sky);color:#fff;transform:translateX(-4px)}
 
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;padding:50px 0}
 .contact-info .info-card{background:#fff;border-radius:12px;padding:18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;border:1px solid rgba(11,37,69,.06);transition:.3s}
@@ -858,6 +982,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   .featured-grid{grid-template-columns:repeat(3,1fr)}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
   .products-grid-page{grid-template-columns:repeat(2,1fr)}
+  .blog-grid-page{grid-template-columns:repeat(2,1fr)}
   .hero-left h1{font-size:3.2rem}
   .about-hero-content{grid-template-columns:1fr}
   .about-hero-image{transform:none}
@@ -886,8 +1011,11 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   .sidebar-filters{position:static}
   .pd-wrap{grid-template-columns:1fr}
   .services-grid{grid-template-columns:repeat(2,1fr)}
-  .cert-grid{grid-template-columns:repeat(2,1fr)}
-  .blog-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+  .blog-grid-page{grid-template-columns:1fr}
+  .blog-single .bs-content{padding:24px}
+  .blog-single h1{font-size:1.6rem}
+  .blog-single .bs-hero{height:240px}
   .contact-grid{grid-template-columns:1fr}
   .cart-layout{grid-template-columns:1fr}
   .checkout-grid{grid-template-columns:1fr}
@@ -920,6 +1048,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   .values-grid{grid-template-columns:1fr}
   .about-hero-text h1{font-size:2.4rem}
   .about-hero-image img{height:280px}
+  .inner-header h1{font-size:2.4rem}
 }
 </style>
 </head>
@@ -966,7 +1095,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
         <p>We craft high-quality sports products that inspire performance, build confidence and bring people together — on every field, in every game.</p>
         <div class="hero-btns">
           <button class="btn btn-primary" onclick="go('products')">Explore Our Products <i class="fas fa-arrow-right"></i></button>
-          <button class="btn btn-play"><i class="fas fa-play"></i> Watch Our Story</button>
         </div>
         <div class="hero-features-inline">
           <div class="hero-feature"><div class="ic"><i class="fas fa-award"></i></div><div class="txt">Premium Quality<span>Materials</span></div></div>
@@ -1030,7 +1158,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
           <span class="label">Our Manufacturing Process</span>
           <h2>From Raw Material<br>to Global Markets</h2>
           <p>Precision, quality and innovation at every step.</p>
-          <button class="btn btn-ghost"><i class="fas fa-play"></i> Watch Full Process</button>
         </div>
         <div class="process-steps">
           <div class="process-step"><div class="circle"><i class="fas fa-cube"></i></div><div class="name">Raw Material</div><div class="sub">Sourcing</div></div>
@@ -1082,7 +1209,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
             <div class="custom-step"><div class="ico"><i class="fas fa-tag"></i></div>Add Logo</div>
             <div class="custom-step"><div class="ico"><i class="fas fa-file-invoice"></i></div>Get Quote</div>
           </div>
-          <button class="btn btn-primary">Start Customization <i class="fas fa-arrow-right"></i></button>
         </div>
         <div class="custom-right">
           <h4>Our Global Markets</h4>
@@ -1127,20 +1253,14 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
             </div>
           </div>
         </div>
-        <div class="brands">
-          <h3>Trusted by Global Brands</h3>
-          <div class="brand-logos">
-            <span>adidas</span><span>DECATHLON</span><span>PUMA</span><span>NIKE</span><span>Wilson</span>
-          </div>
-        </div>
+        <div class="brands"></div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ================= ABOUT PAGE ================= -->
+<!-- ABOUT -->
 <div class="page" id="page-about">
-
   <section class="about-hero-strip">
     <div class="about-hero-content">
       <div class="about-hero-text">
@@ -1280,12 +1400,13 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
       </div>
     </div>
   </section>
-
 </div>
 
 <!-- PRODUCTS -->
 <div class="page" id="page-products">
-  <div class="inner-header"><h1>Our Products</h1><p>Home / Products</p></div>
+  <div class="inner-header" style="background-image:url('product.jfif');">
+    <h1>Our Products</h1><p>Home / Products</p>
+  </div>
   <div style="background:var(--light);padding:20px 0">
     <div class="container">
       <div class="products-page-layout" style="padding:0">
@@ -1301,13 +1422,17 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- PRODUCT DETAIL -->
 <div class="page" id="page-product-detail">
-  <div class="inner-header"><h1>Product Details</h1><p>Home / Products / Detail</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1600&q=80');">
+    <h1>Product Details</h1><p>Home / Products / Detail</p>
+  </div>
   <div class="container"><div class="pd-wrap" id="pdWrap"></div></div>
 </div>
 
 <!-- GALLERY -->
 <div class="page" id="page-gallery">
-  <div class="inner-header"><h1>Gallery</h1><p>Home / Gallery</p></div>
+  <div class="inner-header" style="background-image:url('gallery.jfif');">
+    <h1>Gallery</h1><p>Home / Gallery</p>
+  </div>
   <div class="container" style="padding:50px 24px;background:var(--light)">
     <div class="gallery-tabs">
       <div class="gallery-tab active" onclick="filterGallery(this,'all')">All</div>
@@ -1326,7 +1451,9 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- SERVICES -->
 <div class="page" id="page-services">
-  <div class="inner-header"><h1>Our Services</h1><p>Home / Services</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80');">
+    <h1>Our Services</h1><p>Home / Services</p>
+  </div>
   <div class="container" style="padding:60px 24px">
     <div class="section-title">More Than Just <span class="accent">Products</span></div>
     <p style="color:#718096;max-width:700px;margin:16px 0 34px;line-height:1.8">We provide a complete range of services to meet your business and customization needs. Our goal is to make your experience smooth, reliable and hassle-free.</p>
@@ -1343,53 +1470,62 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- CERTIFICATIONS -->
 <div class="page" id="page-certifications">
-  <div class="inner-header"><h1>Certifications</h1><p>Home / Certifications</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80');">
+    <h1>Certifications</h1><p>Home / Certifications</p>
+  </div>
   <div class="container" style="padding:60px 24px">
     <div class="section-title">Our Quality & <span class="accent">Compliance</span></div>
-    <p style="color:#718096;max-width:700px;margin:16px 0 34px;line-height:1.8">We are committed to maintaining the highest standards of quality, safety and ethical manufacturing. Our products meet international standards and are certified by globally recognized organizations.</p>
+    <p style="color:#718096;max-width:700px;margin:16px 0 34px;line-height:1.8">We are committed to maintaining the highest standards of quality, safety and ethical manufacturing. Our products meet international standards and are certified by globally recognized organizations. Click any certificate to view it in full size.</p>
     <div class="cert-grid">
-      <div class="cert-card"><img src="cert1.png" alt="ISO" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=ISO'"><h4>ISO 9001</h4><p>Quality Management</p></div>
-      <div class="cert-card"><img src="cert2.png" alt="BSCI" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=BSCI'"><h4>BSCI</h4><p>Social Compliance</p></div>
-      <div class="cert-card"><img src="cert3.png" alt="SGS" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=SGS'"><h4>SGS</h4><p>Product Testing</p></div>
-      <div class="cert-card"><img src="cert4.png" alt="CE" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=CE'"><h4>CE</h4><p>European Standards</p></div>
+      <div class="cert-card" onclick="openCertLightbox('cert1.jpeg')">
+        <div class="cert-img-wrap">
+          <img src="cert1.jpeg" alt="Sialkot Chamber of Commerce Certificate" onerror="this.src='https://via.placeholder.com/400x300/1B4F72/ffffff?text=SCCI+Certificate'">
+        </div>
+        <h4>SCCI Membership</h4>
+        <p>Sialkot Chamber of Commerce & Industry</p>
+      </div>
     </div>
     <div class="cert-banner"><h3>Quality is not just a standard, it's our promise.</h3><p>Every product we ship is tested and certified to meet global quality requirements.</p></div>
   </div>
 </div>
 
+<!-- CERTIFICATE LIGHTBOX -->
+<div class="cert-lightbox" id="certLightbox" onclick="closeCertLightbox()">
+  <button class="close-btn" onclick="event.stopPropagation();closeCertLightbox()"><i class="fas fa-times"></i></button>
+  <img src="" alt="Certificate" id="certLightboxImg" onclick="event.stopPropagation()">
+  <div class="hint">Click anywhere to close</div>
+</div>
+
 <!-- BLOG -->
 <div class="page" id="page-blog">
-  <div class="inner-header"><h1>Blog & News</h1><p>Home / Blog & News</p></div>
-  <div class="container" style="padding:50px 24px;background:var(--light)">
-    <div class="blog-grid">
-      <div class="blog-main">
-        <div class="blog-feature">
-          <img src="blog1.jpg" alt="Blog" onerror="this.src='https://via.placeholder.com/800x300/1B4F72/ffffff?text=Blog'">
-          <div class="bf-info">
-            <div class="blog-meta">APRIL 21, 2025</div>
-            <h3>The Importance of Quality Sports Gear for Performance</h3>
-            <p>Discover how the right sports equipment can enhance performance, improve safety, and elevate the overall experience for athletes at every level.</p>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <div class="blog-mini"><img src="blog2.jpg" alt="" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=Blog'"><div><h4>Top 5 Football Trends in 2025</h4><div class="date">April 18, 2025</div></div></div>
-          <div class="blog-mini"><img src="blog3.jpg" alt="" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=Blog'"><div><h4>How to Choose the Right Sportswear</h4><div class="date">April 15, 2025</div></div></div>
-          <div class="blog-mini"><img src="blog4.jpg" alt="" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=Blog'"><div><h4>Our Commitment to a Sustainable Future</h4><div class="date">April 5, 2025</div></div></div>
-        </div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1600&q=80');">
+    <h1>Blog & News</h1><p>Home / Blog & News</p>
+  </div>
+
+  <div id="blogListView">
+    <div class="container" style="padding:60px 24px">
+      <div class="blog-intro">
+        Insights, tips, and stories from the world of sports goods manufacturing. Explore industry trends, product guides, and behind-the-scenes looks at our Sialkot factory.
       </div>
-      <div class="blog-side">
-        <h4 style="font-family:'Bebas Neue';font-size:1.3rem;color:var(--navy);letter-spacing:.5px">Recent Posts</h4>
-        <div class="blog-mini"><img src="blog1.jpg" alt="" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=Blog'"><div><h4>The Importance of Quality Sports Gear</h4><div class="date">April 21, 2025</div></div></div>
-        <div class="blog-mini"><img src="blog2.jpg" alt="" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=Blog'"><div><h4>Top 5 Football Trends in 2025</h4><div class="date">April 18, 2025</div></div></div>
-        <div class="blog-mini"><img src="blog3.jpg" alt="" onerror="this.src='https://via.placeholder.com/80/1B4F72/ffffff?text=Blog'"><div><h4>How to Choose the Right Sportswear</h4><div class="date">April 15, 2025</div></div></div>
-      </div>
+      <div class="blog-grid-page" id="blogGrid"></div>
+    </div>
+  </div>
+
+  <div id="blogSingleView" style="display:none;">
+    <div class="container" style="padding:40px 24px 60px">
+      <button class="blog-back-btn" onclick="showBlogList()">
+        <i class="fas fa-arrow-left"></i> Back to Blog
+      </button>
+      <div class="blog-single" id="blogSingleContent"></div>
     </div>
   </div>
 </div>
 
 <!-- CONTACT -->
 <div class="page" id="page-contact">
-  <div class="inner-header"><h1>Contact Us</h1><p>Home / Contact Us</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=1600&q=80');">
+    <h1>Contact Us</h1><p>Home / Contact Us</p>
+  </div>
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
@@ -1420,7 +1556,9 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- TRACKING -->
 <div class="page" id="page-tracking">
-  <div class="inner-header"><h1>Order Tracking</h1><p>Home / Tracking</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1600&q=80');">
+    <h1>Order Tracking</h1><p>Home / Tracking</p>
+  </div>
   <div class="container">
     <div class="track-wrap">
       <h2>Track Your Order</h2>
@@ -1441,13 +1579,17 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- CART -->
 <div class="page" id="page-cart">
-  <div class="inner-header"><h1>Your Cart</h1><p>Home / Cart</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80');">
+    <h1>Your Cart</h1><p>Home / Cart</p>
+  </div>
   <div class="container"><div class="cart-layout" id="cartLayout"></div></div>
 </div>
 
 <!-- CHECKOUT -->
 <div class="page" id="page-checkout">
-  <div class="inner-header"><h1>Secure Checkout</h1><p>Home / Cart / Checkout</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=1600&q=80');">
+    <h1>Secure Checkout</h1><p>Home / Cart / Checkout</p>
+  </div>
   <div class="container">
     <div class="checkout-grid">
       <div class="checkout-form">
@@ -1478,7 +1620,9 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- SUCCESS -->
 <div class="page" id="page-success">
-  <div class="inner-header"><h1>Order Confirmed!</h1><p>Thank you for your purchase</p></div>
+  <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1556742111-a301076d9d18?w=1600&q=80');">
+    <h1>Order Confirmed!</h1><p>Thank you for your purchase</p>
+  </div>
   <div class="container" style="padding:60px 24px">
     <div class="empty-state" style="max-width:600px;margin:0 auto">
       <i class="fas fa-check-circle" style="color:#28a745;opacity:1"></i>
@@ -1683,6 +1827,7 @@ function go(page){
   if(page==='products') renderProducts();
   if(page==='home') renderHome();
   if(page==='gallery') renderGallery();
+  if(page==='blog') { showBlogList(); }
   if(page==='checkout') renderCheckoutSummary();
   if(page==='admin') checkAdminAuth();
   if(page==='about') initTimeline();
@@ -1700,6 +1845,250 @@ function initTimeline(){
     });
   }, {threshold: 0.15});
   items.forEach(item=>observer.observe(item));
+}
+
+/* CERTIFICATE LIGHTBOX */
+function openCertLightbox(src){
+  const lb = document.getElementById('certLightbox');
+  const img = document.getElementById('certLightboxImg');
+  img.src = src;
+  lb.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCertLightbox(){
+  const lb = document.getElementById('certLightbox');
+  lb.classList.remove('show');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeCertLightbox();
+});
+
+/* ============================================================
+   BLOG SYSTEM
+============================================================ */
+const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "The Importance of Quality Sports Gear for Performance",
+    date: "April 21, 2025",
+    author: "Rana Rashid Siddique",
+    category: "Sports Gear",
+    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80",
+    excerpt: "Discover how the right sports equipment can enhance performance, improve safety, and elevate the overall experience for athletes at every level.",
+    body: `
+      <p>In the world of sports, the difference between winning and losing often comes down to the smallest details. And one of the most overlooked details is the quality of your sports gear. Whether you're a professional athlete or a weekend warrior, the equipment you use directly impacts your performance, safety, and enjoyment of the game.</p>
+      
+      <h2>Why Quality Matters</h2>
+      <p>High-quality sports gear isn't just about looking good — it's about function. Premium materials and superior craftsmanship provide:</p>
+      <ul>
+        <li><strong>Better durability</strong> — Quality gear lasts longer and performs consistently over time.</li>
+        <li><strong>Enhanced performance</strong> — Equipment designed for your sport helps you play better.</li>
+        <li><strong>Improved safety</strong> — Proper gear reduces the risk of injuries.</li>
+        <li><strong>Confidence</strong> — When you trust your gear, you play with more confidence.</li>
+      </ul>
+
+      <h2>The Imperial Enterprises Difference</h2>
+      <p>At Imperial Enterprises, we understand that every athlete deserves the best. That's why we use only premium materials and follow strict quality control at every stage of production. From the initial cutting to the final stitching, every product is crafted with precision.</p>
+
+      <blockquote>"We don't just manufacture sports goods — we craft the tools that help athletes chase their dreams."</blockquote>
+
+      <h3>Our Manufacturing Standards</h3>
+      <p>Our factory in Sialkot follows international standards like ISO 9001 and BSCI. Every product is tested before it leaves our facility, ensuring that our customers receive nothing but the best.</p>
+
+      <h2>Choosing the Right Gear</h2>
+      <p>When selecting sports gear, consider the following:</p>
+      <ul>
+        <li><strong>Your sport</strong> — Different sports need different equipment.</li>
+        <li><strong>Your level</strong> — Beginners and professionals have different needs.</li>
+        <li><strong>Material quality</strong> — Look for durable, breathable fabrics.</li>
+        <li><strong>Fit</strong> — Proper fit is crucial for performance and comfort.</li>
+      </ul>
+
+      <h2>Final Thoughts</h2>
+      <p>Investing in quality sports gear is investing in yourself. Whether you're training for a marathon or playing a friendly football match, the right equipment can make all the difference. And at Imperial Enterprises, we're proud to provide that equipment to athletes around the world.</p>
+    `
+  },
+  {
+    id: 2,
+    title: "Top 5 Football Trends in 2025",
+    date: "April 18, 2025",
+    author: "Rana Rashid Siddique",
+    category: "Football",
+    image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=800&q=80",
+    excerpt: "From smart balls to sustainable gear, here are the top trends shaping the beautiful game this year.",
+    body: `
+      <p>Football is constantly evolving, and 2025 is no exception. From cutting-edge technology to eco-friendly materials, here are the top 5 trends shaping the world's most popular sport.</p>
+
+      <h2>1. Smart Footballs</h2>
+      <p>Embedded sensors in footballs now track speed, spin, and trajectory, giving players and coaches unprecedented insight into performance. These smart balls are becoming standard in professional leagues worldwide.</p>
+
+      <h2>2. Sustainable Gear</h2>
+      <p>Eco-friendly materials are taking over. Brands are using recycled plastics and organic fabrics to create jerseys, shorts, and boots that don't harm the environment.</p>
+
+      <h2>3. Custom Kits</h2>
+      <p>Personalized kits are bigger than ever. Fans want jerseys with their names and favorite numbers, and clubs are offering more customization options than before.</p>
+
+      <h2>4. Lightweight Boots</h2>
+      <p>Modern football boots are lighter than ever, designed for speed and agility. Brands are experimenting with new materials to shave off every gram.</p>
+
+      <h2>5. Data-Driven Training</h2>
+      <p>Wearable technology is now a standard part of training. Players use GPS trackers and heart rate monitors to optimize their performance.</p>
+
+      <h2>What's Next?</h2>
+      <p>As we look ahead, one thing is clear: football will continue to embrace technology and sustainability. And Imperial Enterprises is proud to be part of that evolution, crafting football gear that meets the demands of modern athletes.</p>
+    `
+  },
+  {
+    id: 3,
+    title: "How to Choose the Right Sportswear",
+    date: "April 15, 2025",
+    author: "Rana Rashid Siddique",
+    category: "Guides",
+    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+    excerpt: "A complete guide to picking the perfect sportswear for your activity, body type, and budget.",
+    body: `
+      <p>Choosing the right sportswear can be the difference between a great workout and an uncomfortable one. In this guide, we'll walk you through everything you need to know.</p>
+
+      <h2>Know Your Activity</h2>
+      <p>Different sports require different types of clothing:</p>
+      <ul>
+        <li><strong>Running</strong> — Lightweight, moisture-wicking fabrics.</li>
+        <li><strong>Gym Training</strong> — Stretchable, supportive materials.</li>
+        <li><strong>Yoga</strong> — Soft, flexible, and breathable.</li>
+        <li><strong>Team Sports</strong> — Durable, tear-resistant clothing.</li>
+      </ul>
+
+      <h2>Consider the Fabric</h2>
+      <p>The fabric matters more than you think. Look for:</p>
+      <ul>
+        <li><strong>Polyester</strong> — Great for moisture-wicking.</li>
+        <li><strong>Nylon</strong> — Durable and stretchy.</li>
+        <li><strong>Spandex</strong> — Perfect for compression wear.</li>
+        <li><strong>Cotton</strong> — Comfortable but not ideal for intense workouts.</li>
+      </ul>
+
+      <h2>Focus on Fit</h2>
+      <p>Sportswear should fit comfortably without being too tight or too loose. Consider:</p>
+      <ul>
+        <li><strong>Movement</strong> — Can you move freely?</li>
+        <li><strong>Coverage</strong> — Does it stay in place during activity?</li>
+        <li><strong>Comfort</strong> — Any chafing or irritation?</li>
+      </ul>
+
+      <h2>Don't Forget Accessories</h2>
+      <p>Accessories like wristbands, headbands, and socks can make a big difference. Choose them wisely.</p>
+
+      <h2>Budget vs Quality</h2>
+      <p>It's tempting to go for cheaper options, but quality sportswear lasts longer and performs better. Invest in pieces that will serve you for years.</p>
+
+      <h2>Final Advice</h2>
+      <p>When in doubt, prioritize comfort and function over fashion. Your performance and your body will thank you.</p>
+    `
+  },
+  {
+    id: 4,
+    title: "Our Commitment to a Sustainable Future",
+    date: "April 5, 2025",
+    author: "Rana Rashid Siddique",
+    category: "Sustainability",
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
+    excerpt: "How Imperial Enterprises is working towards a greener, more sustainable sports goods industry.",
+    body: `
+      <p>Sustainability is no longer optional — it's a responsibility. At Imperial Enterprises, we're committed to reducing our environmental impact and creating a more sustainable future for the sports goods industry.</p>
+
+      <h2>Our Environmental Commitment</h2>
+      <p>We've taken several steps to reduce our carbon footprint:</p>
+      <ul>
+        <li><strong>Eco-friendly materials</strong> — We source recycled and organic fabrics whenever possible.</li>
+        <li><strong>Energy-efficient manufacturing</strong> — Our factory uses solar panels and energy-efficient machinery.</li>
+        <li><strong>Waste reduction</strong> — We recycle scraps and minimize waste in every process.</li>
+        <li><strong>Sustainable packaging</strong> — We use biodegradable and recyclable packaging.</li>
+      </ul>
+
+      <h2>Ethical Manufacturing</h2>
+      <p>Sustainability isn't just about the environment — it's also about people. We ensure:</p>
+      <ul>
+        <li><strong>Fair wages</strong> — Our workers are paid fairly and treated with respect.</li>
+        <li><strong>Safe working conditions</strong> — Our facility meets international safety standards.</li>
+        <li><strong>No child labor</strong> — We strictly enforce a no-child-labor policy.</li>
+        <li><strong>Community support</strong> — We invest in local schools and community programs.</li>
+      </ul>
+
+      <h2>Looking Ahead</h2>
+      <p>Our goal is to become a fully carbon-neutral manufacturer by 2030. We know it won't be easy, but we're committed to making it happen.</p>
+
+      <h2>How You Can Help</h2>
+      <p>Sustainability is a team effort. Here's how you can contribute:</p>
+      <ul>
+        <li>Choose sustainable products when possible.</li>
+        <li>Recycle your old sports gear.</li>
+        <li>Support brands that prioritize sustainability.</li>
+        <li>Spread the word about sustainable practices.</li>
+      </ul>
+
+      <h2>Final Thoughts</h2>
+      <p>The future of sports goods is green. At Imperial Enterprises, we're proud to be part of that future — and we invite you to join us.</p>
+    `
+  }
+];
+
+function renderBlogGrid(){
+  const grid = document.getElementById('blogGrid');
+  if(!grid) return;
+  grid.innerHTML = BLOG_POSTS.map(post => `
+    <div class="blog-card" onclick="openBlogPost(${post.id})">
+      <div class="bc-img">
+        <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/1B4F72/ffffff?text=Blog'">
+      </div>
+      <div class="bc-info">
+        <div class="bc-meta">
+          <span><i class="fas fa-calendar"></i> ${post.date}</span>
+          <span>·</span>
+          <span>${post.category}</span>
+        </div>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt}</p>
+        <div class="bc-read">Read Article <i class="fas fa-arrow-right"></i></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openBlogPost(id){
+  const post = BLOG_POSTS.find(p => p.id === id);
+  if(!post) return;
+  const content = document.getElementById('blogSingleContent');
+  content.innerHTML = `
+    <div class="bs-hero">
+      <img src="${post.image}" alt="${post.title}" onerror="this.src='https://via.placeholder.com/1200x500/1B4F72/ffffff?text=Blog'">
+    </div>
+    <div class="bs-content">
+      <div class="bs-meta">
+        <span><i class="fas fa-calendar"></i> ${post.date}</span>
+        <span><i class="fas fa-user"></i> ${post.author}</span>
+        <span><i class="fas fa-folder"></i> ${post.category}</span>
+      </div>
+      <h1>${post.title}</h1>
+      <div class="bs-body">${post.body}</div>
+      <div class="bs-share">
+        <span class="label">Share this article:</span>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}" target="_blank" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://wa.me/?text=${encodeURIComponent(post.title)}" target="_blank" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  `;
+  document.getElementById('blogListView').style.display = 'none';
+  document.getElementById('blogSingleView').style.display = 'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showBlogList(){
+  document.getElementById('blogSingleView').style.display = 'none';
+  document.getElementById('blogListView').style.display = 'block';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 /* PRODUCTS */
@@ -2054,9 +2443,7 @@ function showToast(msg, err=false){
   toastTimer = setTimeout(()=>t.classList.remove('show'), 2500);
 }
 
-/* ============================================================
-   BACKGROUND MUSIC — ANY CLICK ON PAGE STARTS MUSIC
-============================================================ */
+/* BACKGROUND MUSIC */
 let bgMusic, musicBtn, musicIcon;
 let musicStarted = false;
 
@@ -2084,10 +2471,7 @@ function playMusic(){
     musicStarted = true;
     updateMusicIcon();
     localStorage.setItem('imperialMusic', 'on');
-    if(musicBtn) musicBtn.classList.remove('show-hint');
-  }).catch(err=>{
-    console.log('Autoplay blocked:', err);
-  });
+  }).catch(err=>{ console.log('Autoplay blocked:', err); });
 }
 
 function toggleMusic(){
@@ -2103,7 +2487,6 @@ function toggleMusic(){
   }
 }
 
-/* Har click/scroll/touch par music start karo */
 function startMusicOnAnyClick(e){
   if(localStorage.getItem('imperialMusic') === 'off'){
     removeAllMusicListeners();
@@ -2131,16 +2514,10 @@ function initMusic(){
   musicBtn = document.getElementById('musicBtn');
   musicIcon = document.getElementById('musicIcon');
   if(!bgMusic) return;
-
   const pref = localStorage.getItem('imperialMusic');
-  if(pref === 'off'){
-    updateMusicIcon();
-    return;
-  }
-
+  if(pref === 'off'){ updateMusicIcon(); return; }
   updateMusicIcon();
   bgMusic.volume = 0.15;
-
   bgMusic.play().then(()=>{
     musicStarted = true;
     updateMusicIcon();
@@ -2152,7 +2529,6 @@ function initMusic(){
     document.addEventListener('touchstart', startMusicOnAnyClick, {passive:true});
     document.addEventListener('touchmove', startMusicOnAnyClick, {passive:true});
     document.addEventListener('mousemove', startMusicOnAnyClick, {passive:true});
-    if(musicBtn) musicBtn.classList.add('show-hint');
   });
 }
 
@@ -2206,11 +2582,7 @@ function showAdminTab(tab, el){
   if(tab==='orders') renderAdminOrders();
 }
 
-function renderAdminPanel(){
-  renderAdminDash();
-  renderAdminProducts();
-  renderAdminOrders();
-}
+function renderAdminPanel(){ renderAdminDash(); renderAdminProducts(); renderAdminOrders(); }
 
 function renderAdminDash(){
   document.getElementById('admTotal').textContent = PRODUCTS.length;
@@ -2273,12 +2645,10 @@ function saveProduct(e){
   const img = document.getElementById('fImg').value.trim();
   const desc = document.getElementById('fDesc').value.trim();
   const avail = document.getElementById('fAvail').value === 'true';
-
   if(!name || !cat || isNaN(price) || !img){
     showToast('Please fill all required fields', true);
     return false;
   }
-
   if(id){
     const p = PRODUCTS.find(x=>x.id === parseInt(id));
     if(p){
@@ -2291,7 +2661,6 @@ function saveProduct(e){
     PRODUCTS.push({id:newId, name, cat, price, img, desc, available:avail});
     showToast('✅ Product added!');
   }
-
   saveProductsToStorage();
   resetProductForm();
   renderAdminProducts();
@@ -2365,6 +2734,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   renderHome();
   renderProducts();
   renderGallery();
+  renderBlogGrid();
   updateCartBadge();
   initMusic();
   initTimeline();
