@@ -1057,7 +1057,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 <nav class="navbar" id="mainNavbar">
   <div class="nav-inner">
     <div class="logo" onclick="go('home')">
-      <img src="logo.png" alt="Imperial Enterprises">
+      <img src="logo.png" alt="Imperial Enterprises" onerror="this.onerror=null;this.style.display='none'">
       <div class="logo-text">
         <div class="main">IMPERIAL ENTERPRISES</div>
         <div class="sub">SPORTS GOODS</div>
@@ -1135,7 +1135,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
           <div class="stat-box"><div class="icon"><i class="fas fa-medal"></i></div><div class="num">100%</div><div class="lbl">Quality Assurance</div></div>
         </div>
         <div class="about-right">
-          <img src="factory.jpg" alt="Our Factory" onerror="this.src='factor.png'">
+          <img src="factory.jpg" alt="Our Factory" onerror="this.onerror=null;this.src='factory.png'">
           <div class="watermark">Our Factory<br>Our Pride</div>
         </div>
       </div>
@@ -1174,7 +1174,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     <div class="container">
       <div class="global-wrap">
         <div class="global-map">
-          <img src="world-map.jpg" alt="World Map" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-globe-americas\' style=\'font-size:8rem;color:#2E86C1;opacity:.25\'></i>'">
+          <img src="world-map.jpg" alt="World Map" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-globe-americas\' style=\'font-size:8rem;color:#2E86C1;opacity:.25\'></i>'">
         </div>
         <div class="global-right">
           <span class="label">Global Presence</span>
@@ -1196,7 +1196,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     <div class="container">
       <div class="custom-wrap">
         <div class="custom-left">
-          <img src="custom-tshirt.png" alt="Custom" onerror="this.src='https://via.placeholder.com/300x400/1B4F72/ffffff?text=YOUR+LOGO'">
+          <img src="custom-tshirt.png" alt="Custom" onerror="this.onerror=null;this.src='https://placehold.co/300x400/1B4F72/ffffff?text=YOUR+LOGO'">
         </div>
         <div class="custom-mid">
           <span class="label">Customize Your Product</span>
@@ -1245,7 +1245,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
           <h3>What Our Clients Say</h3>
           <div class="sub">Trusted by businesses and sports brands around the world.</div>
           <div class="testi-card">
-            <img src="client.jpg" alt="Client" onerror="this.src='https://via.placeholder.com/60/1B4F72/ffffff?text=JM'">
+            <img src="client.jpg" alt="Client" onerror="this.onerror=null;this.src='https://placehold.co/60/1B4F72/ffffff?text=JM'">
             <div>
               <div class="text">"Imperial Enterprises has been our go-to supplier for years. Timeliness, professionalism and on-time delivery are simply unmatched."</div>
               <div class="name">— John Miller, SportsPro USA</div>
@@ -1276,7 +1276,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
         </div>
       </div>
       <div class="about-hero-image">
-        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1000&q=80" alt="Sports Goods" onerror="this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1000&q=80'">
+        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1000&q=80" alt="Sports Goods" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1000&q=80'">
       </div>
     </div>
   </section>
@@ -1479,7 +1479,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     <div class="cert-grid">
       <div class="cert-card" onclick="openCertLightbox('cert1.jpeg')">
         <div class="cert-img-wrap">
-          <img src="cert1.jpeg" alt="Sialkot Chamber of Commerce Certificate" onerror="this.src='https://via.placeholder.com/400x300/1B4F72/ffffff?text=SCCI+Certificate'">
+          <img src="cert1.jpeg" alt="Sialkot Chamber of Commerce Certificate" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1B4F72/ffffff?text=SCCI+Certificate'">
         </div>
         <h4>SCCI Membership</h4>
         <p>Sialkot Chamber of Commerce & Industry</p>
@@ -1743,7 +1743,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
     <div class="footer-grid">
       <div>
         <div class="logo" style="margin-bottom:12px">
-          <img src="logo.png" alt="Imperial" style="height:52px">
+          <img src="logo.png" alt="Imperial" style="height:52px" onerror="this.onerror=null;this.style.display='none'">
           <div class="logo-text">
             <div class="main">IMPERIAL ENTERPRISES</div>
             <div class="sub">SPORTS GOODS | GLOBAL REACH</div>
@@ -2039,7 +2039,7 @@ function renderBlogGrid(){
   grid.innerHTML = BLOG_POSTS.map(post => `
     <div class="blog-card" onclick="openBlogPost(${post.id})">
       <div class="bc-img">
-        <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400/1B4F72/ffffff?text=Blog'">
+        <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1B4F72/ffffff?text=Blog'">
       </div>
       <div class="bc-info">
         <div class="bc-meta">
@@ -2061,7 +2061,7 @@ function openBlogPost(id){
   const content = document.getElementById('blogSingleContent');
   content.innerHTML = `
     <div class="bs-hero">
-      <img src="${post.image}" alt="${post.title}" onerror="this.src='https://via.placeholder.com/1200x500/1B4F72/ffffff?text=Blog'">
+      <img src="${post.image}" alt="${post.title}" onerror="this.onerror=null;this.src='https://placehold.co/1200x500/1B4F72/ffffff?text=Blog'">
     </div>
     <div class="bs-content">
       <div class="bs-meta">
@@ -2129,13 +2129,13 @@ function saveProductsToStorage(){ localStorage.setItem('imperialProducts', JSON.
 function buildGalleryFromProducts(){ GALLERY = PRODUCTS.map(p => ({ cat: p.cat.toLowerCase(), img: p.img, name: p.name })); }
 
 const CATEGORIES = [
-  {name:'Football', sub:'Balls | Kits | Accessories', img:'football.jpg', icon:'⚽'},
-  {name:'Cricket', sub:'Bats | Balls | Gear', img:'cricket.jpg', icon:'🏏'},
-  {name:'Basketball', sub:'Balls | Accessories', img:'basketball.jpg', icon:'🏀'},
-  {name:'Volleyball', sub:'Balls | Nets | Gear', img:'volleyball.jpg', icon:'🏐'},
-  {name:'Tennis', sub:'Rackets | Balls | Accessories', img:'tennis.jpg', icon:'🎾'},
-  {name:'Badminton', sub:'Rackets | Shuttlecocks', img:'badminton.jpg', icon:'🏸'},
-  {name:'Others', sub:'Fitness | Training | More', img:'fitness.jpg', icon:'🏋️'}
+  {name:'Football', sub:'Balls | Kits | Accessories', img:'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=400&q=80', icon:'⚽'},
+  {name:'Cricket', sub:'Bats | Balls | Gear', img:'https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=400&q=80', icon:'🏏'},
+  {name:'Basketball', sub:'Balls | Accessories', img:'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&q=80', icon:'🏀'},
+  {name:'Volleyball', sub:'Balls | Nets | Gear', img:'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400&q=80', icon:'🏐'},
+  {name:'Tennis', sub:'Rackets | Balls | Accessories', img:'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80', icon:'🎾'},
+  {name:'Badminton', sub:'Rackets | Shuttlecocks', img:'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=400&q=80', icon:'🏸'},
+  {name:'Others', sub:'Fitness | Training | More', img:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=80', icon:'🏋️'}
 ];
 
 function renderHome(){
@@ -2144,7 +2144,7 @@ function renderHome(){
     cg.innerHTML = CATEGORIES.map(c=>`
       <div class="cat-card" onclick="go('products')">
         <div class="cat-img">
-          <img src="${c.img}" alt="${c.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:2.6rem\\'>${c.icon}</span>'">
+          <img src="${c.img}" alt="${c.name}" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:2.6rem\'>${c.icon}</span>'">
         </div>
         <div class="cat-info">
           <h4>${c.name}</h4>
@@ -2162,7 +2162,7 @@ function productCardHTML(p){
   return `
     <div class="prod-card" onclick="openProduct(${p.id})">
       <div class="prod-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:3.5rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)\\'>📦</span>'">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:3.5rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)\'>📦</span>'">
         <button class="prod-wish" onclick="event.stopPropagation();showToast('❤️ Added to wishlist!')"><i class="far fa-heart"></i></button>
         <button class="prod-add-btn" onclick="event.stopPropagation();addToCart(${p.id})"><i class="fas fa-plus"></i></button>
       </div>
@@ -2198,11 +2198,11 @@ function openProduct(id){
   const wrap = document.getElementById('pdWrap');
   wrap.innerHTML = `
     <div class="pd-gallery">
-      <div class="main-img"><img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:8rem\\'>📦</span>'"></div>
+      <div class="main-img"><img src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:8rem\'>📦</span>'"></div>
       <div class="pd-thumbs">
-        <img src="${p.img}" class="active" onerror="this.style.display='none'">
-        <img src="${p.img}" onerror="this.style.display='none'">
-        <img src="${p.img}" onerror="this.style.display='none'">
+        <img src="${p.img}" class="active" onerror="this.onerror=null;this.style.display='none'">
+        <img src="${p.img}" onerror="this.onerror=null;this.style.display='none'">
+        <img src="${p.img}" onerror="this.onerror=null;this.style.display='none'">
       </div>
     </div>
     <div class="pd-info">
@@ -2264,7 +2264,7 @@ function renderGallery(filter='all'){
   }
   grid.innerHTML = list.map(g=>`
     <div class="gallery-item">
-      <img src="${g.img}" alt="${g.name || 'Gallery'}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/1B4F72/ffffff?text=Gallery'">
+      <img src="${g.img}" alt="${g.name || 'Gallery'}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1B4F72/ffffff?text=Gallery'">
     </div>
   `).join('');
 }
@@ -2321,7 +2321,7 @@ function renderCart(){
     subtotal += it.price * it.qty;
     return `
       <div class="cart-item-row">
-        <div class="c-img"><img src="${it.img}" alt="" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:2rem;display:flex;align-items:center;justify-content:center;height:100%\\'>📦</span>'"></div>
+        <div class="c-img"><img src="${it.img}" alt="" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:2rem;display:flex;align-items:center;justify-content:center;height:100%\'>📦</span>'"></div>
         <div><h4>${it.name}</h4><div class="c-cat">${it.cat}</div></div>
         <div class="cart-qty">
           <button onclick="changeQty(${it.id},-1)">−</button>
@@ -2602,7 +2602,7 @@ function renderAdminProducts(){
   tbody.innerHTML = PRODUCTS.map((p, i)=>`
     <tr>
       <td>${i+1}</td>
-      <td><img src="${p.img}" alt="" onerror="this.src='https://via.placeholder.com/50/1B4F72/fff?text=IMG'"></td>
+      <td><img src="${p.img}" alt="" onerror="this.onerror=null;this.src='https://placehold.co/50/1B4F72/fff?text=IMG'"></td>
       <td><strong>${p.name}</strong></td>
       <td>${p.cat}</td>
       <td>$${p.price.toFixed(2)}</td>
