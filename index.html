@@ -2163,7 +2163,7 @@ function productCardHTML(p){
     <div class="prod-card" onclick="openProduct(${p.id})">
       <div class="prod-img">
         <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:3.5rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)\'>📦</span>'">
-        <button class="prod-wish" onclick="event.stopPropagation();showToast('❤️ Added to wishlist!')"><i class="far fa-heart"></i></button>
+        
         <button class="prod-add-btn" onclick="event.stopPropagation();addToCart(${p.id})"><i class="fas fa-plus"></i></button>
       </div>
       <div class="prod-info">
