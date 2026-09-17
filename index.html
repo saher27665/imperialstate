@@ -562,7 +562,6 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 .music-btn.playing{background:linear-gradient(135deg,#2E86C1,#4CAF50)}
 .music-btn i{position:relative;z-index:1;pointer-events:none}
 
-/* ============ INNER HEADER WITH BACKGROUND PHOTO ============ */
 .inner-header{
   margin-top:78px;padding:100px 24px 80px;
   background:linear-gradient(120deg,rgba(11,37,69,.85) 0%,rgba(27,79,114,.8) 60%,rgba(46,134,193,.75) 100%);
@@ -1084,7 +1083,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   </div>
 </nav>
 
-<!-- HOME (same as before) -->
+<!-- HOME -->
 <div class="page active" id="page-home">
   <section class="hero">
     <div class="hero-overlay"></div>
@@ -1446,7 +1445,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   </div>
 </div>
 
-<!-- CONTACT - UPDATED WITH EMAILJS -->
+<!-- CONTACT - UPDATED WITH NEW PHONE NUMBER -->
 <div class="page" id="page-contact">
   <div class="inner-header" style="background-image:url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=1600&q=80');">
     <h1>Contact Us</h1><p>Home / Contact Us</p>
@@ -1458,7 +1457,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
         <p style="font-size:.82rem;color:#718096;margin-bottom:18px">We'd love to hear from you. Reach out to us for inquiries, orders, or any support you need.</p>
         <div class="info-card"><div class="ic"><i class="fas fa-map-marker-alt"></i></div><div><h4>Factory Location</h4><p>Gunjianwali Kallan, Sialkot, Pakistan</p></div></div>
         <div class="info-card"><div class="ic"><i class="fas fa-map-pin"></i></div><div><h4>Office Address</h4><p>The House# 725G Model Town Ugoki, Sialkot PC 51310, Pakistan</p></div></div>
-        <div class="info-card"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>+92 325 11251124</p></div></div>
+        <div class="info-card"><div class="ic"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>+92 52 3511245</p></div></div>
         <div class="info-card"><div class="ic"><i class="fas fa-mobile-alt"></i></div><div><h4>Mobile / WhatsApp</h4><p>+92 333 4729999</p></div></div>
         <div class="info-card"><div class="ic"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>iesc@imperialenterprisesstateco.com</p></div></div>
       </div>
@@ -1647,7 +1646,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER - UPDATED WITH NEW PHONE NUMBER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -1685,7 +1684,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
       <div>
         <h4>Contact Us</h4>
         <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Gunjianwali Kallan, Sialkot, Pakistan</span></div>
-        <div class="contact-item"><i class="fas fa-phone"></i><span>+92 325 11251124</span></div>
+        <div class="contact-item"><i class="fas fa-phone"></i><span>+92 52 3511245</span></div>
         <div class="contact-item"><i class="fas fa-mobile-alt"></i><span>+92 333 4729999</span></div>
         <div class="contact-item"><i class="fas fa-envelope"></i><span>iesc@imperialenterprisesstateco.com</span></div>
       </div>
@@ -1724,10 +1723,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 <!-- ============================================================ -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  // Initialize EmailJS with your public key
   emailjs.init({ publicKey: "d0piOzrwIHQaXiYch" });
-  
-  // EmailJS Configuration
   const EMAILJS_SERVICE = "service_mqjx53o";
   const EMAILJS_TEMPLATE = "template_lgyz9dj";
   const ADMIN_EMAIL = "iesc@imperialenterprisesstateco.com";
@@ -2065,9 +2061,6 @@ function renderCheckoutSummary(){
   box.innerHTML = `<h3>Order Summary</h3>${items}<div class="summary-line"><span>Shipping</span><span>$${shipping.toFixed(2)}</span></div><div class="summary-line"><span>Tax (10%)</span><span>$${tax.toFixed(2)}</span></div><div class="summary-line total"><span>Total</span><span>$${total.toFixed(2)}</span></div>`;
 }
 
-/* ============================================================ */
-/* PLACE ORDER - WITH EMAILJS INTEGRATION                       */
-/* ============================================================ */
 function placeOrder(e){
   e.preventDefault();
   const cart = getCart();
@@ -2101,7 +2094,6 @@ function placeOrder(e){
   orders.push(order);
   localStorage.setItem('imperialOrders', JSON.stringify(orders));
   
-  // Send order email to admin via EmailJS
   const orderNumber = 'IMP-' + String(orders.length).padStart(4, '0');
   const orderMessage = 
     'NEW ORDER RECEIVED\n' +
@@ -2144,9 +2136,6 @@ function trackOrder(){
   showToast(`📍 Order ${v} is currently in production!`);
 }
 
-/* ============================================================ */
-/* SUBMIT CONTACT - WITH EMAILJS INTEGRATION                    */
-/* ============================================================ */
 function submitContact(e){
   e.preventDefault();
   
@@ -2180,9 +2169,6 @@ function submitContact(e){
   return false;
 }
 
-/* ============================================================ */
-/* NEWSLETTER - WITH EMAILJS INTEGRATION                        */
-/* ============================================================ */
 function subscribeNewsletter(){
   const v = document.getElementById('newsletterEmail').value.trim();
   if(!v){ showToast('Please enter your email', true); return; }
