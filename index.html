@@ -1564,19 +1564,7 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 <!-- ADMIN -->
 <div class="page" id="page-admin">
-  <div class="admin-login" id="adminLogin">
-    <div class="admin-login-box">
-      <div class="lock-icon">🔐</div>
-      <h2>Admin Login</h2>
-      <p>Enter your credentials to access the admin panel</p>
-      <form onsubmit="return adminLogin(event)">
-        <div class="fg"><label>Username</label><input type="text" id="adminUser" placeholder="admin" required></div>
-        <div class="fg"><label>Password</label><input type="password" id="adminPass" placeholder="••••••••" required></div>
-        <div class="error-msg" id="adminError">❌ Invalid username or password</div>
-        <button type="submit" class="btn-login">🔑 Login</button>
-      </form>
-    </div>
-  </div>
+
 
   <div class="admin-panel" id="adminPanel" style="display:none">
     <div class="admin-header">
@@ -1746,7 +1734,7 @@ function go(page){
   if(page==='gallery') renderGallery();
   if(page==='blog') { showBlogList(); }
   if(page==='checkout') renderCheckoutSummary();
-  if(page==='admin') checkAdminAuth();
+
   if(page==='about') initTimeline();
 }
 
