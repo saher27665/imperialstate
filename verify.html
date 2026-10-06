@@ -6,6 +6,8 @@
 <title>Verify Document — Imperial Enterprises</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ✅ PDF.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -32,7 +34,7 @@ html, body {
 body { display: flex; flex-direction: column; }
 
 /* ============================================
-   LOADING SCREEN — Data Stream Style
+   LOADING SCREEN
 ============================================ */
 .loading-screen {
   position: fixed;
@@ -47,12 +49,8 @@ body { display: flex; flex-direction: column; }
   overflow: hidden;
 }
 
-.loading-screen.hide {
-  opacity: 0;
-  visibility: hidden;
-}
+.loading-screen.hide { opacity: 0; visibility: hidden; }
 
-/* Hexagonal grid background */
 .hex-grid {
   position: absolute;
   inset: 0;
@@ -60,12 +58,8 @@ body { display: flex; flex-direction: column; }
   pointer-events: none;
 }
 
-.hex-grid svg {
-  width: 100%;
-  height: 100%;
-}
+.hex-grid svg { width: 100%; height: 100%; }
 
-/* Data streams */
 .data-streams {
   position: absolute;
   inset: 0;
@@ -77,10 +71,7 @@ body { display: flex; flex-direction: column; }
   position: absolute;
   left: -100%;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(46,134,193,.6) 50%, 
-    transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(46,134,193,.6) 50%, transparent 100%);
   animation: streamMove linear infinite;
 }
 
@@ -97,7 +88,6 @@ body { display: flex; flex-direction: column; }
   100% { left: 100%; opacity: 0; }
 }
 
-/* Center verify mark */
 .verify-mark {
   position: relative;
   width: 280px;
@@ -109,7 +99,6 @@ body { display: flex; flex-direction: column; }
   z-index: 2;
 }
 
-/* Pulse waves */
 .pulse-wave {
   position: absolute;
   border-radius: 50%;
@@ -122,21 +111,10 @@ body { display: flex; flex-direction: column; }
 .pulse-wave:nth-child(3) { animation-delay: 2s; }
 
 @keyframes pulseExpand {
-  0% {
-    width: 60px;
-    height: 60px;
-    opacity: 1;
-    border-color: rgba(46,134,193,.8);
-  }
-  100% {
-    width: 260px;
-    height: 260px;
-    opacity: 0;
-    border-color: rgba(46,134,193,0);
-  }
+  0% { width: 60px; height: 60px; opacity: 1; border-color: rgba(46,134,193,.8); }
+  100% { width: 260px; height: 260px; opacity: 0; border-color: rgba(46,134,193,0); }
 }
 
-/* Outer hexagon */
 .hex-ring {
   position: absolute;
   width: 200px;
@@ -144,10 +122,7 @@ body { display: flex; flex-direction: column; }
   animation: rotateSlow 20s linear infinite;
 }
 
-.hex-ring svg {
-  width: 100%;
-  height: 100%;
-}
+.hex-ring svg { width: 100%; height: 100%; }
 
 .hex-ring polygon {
   fill: none;
@@ -157,11 +132,8 @@ body { display: flex; flex-direction: column; }
 
 .hex-ring polygon:nth-child(1) { stroke-dasharray: 4 8; }
 
-@keyframes rotateSlow {
-  to { transform: rotate(360deg); }
-}
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
 
-/* Inner hexagon */
 .hex-ring-inner {
   position: absolute;
   width: 150px;
@@ -176,11 +148,8 @@ body { display: flex; flex-direction: column; }
   stroke-dasharray: 8 4;
 }
 
-@keyframes rotateSlowReverse {
-  to { transform: rotate(-360deg); }
-}
+@keyframes rotateSlowReverse { to { transform: rotate(-360deg); } }
 
-/* Center icon */
 .verify-center {
   position: relative;
   width: 100px;
@@ -190,11 +159,7 @@ body { display: flex; flex-direction: column; }
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 20px 50px rgba(46,134,193,.6),
-    0 0 0 8px rgba(46,134,193,.15),
-    0 0 0 16px rgba(46,134,193,.08),
-    inset 0 4px 12px rgba(255,255,255,.2);
+  box-shadow: 0 20px 50px rgba(46,134,193,.6), 0 0 0 8px rgba(46,134,193,.15), 0 0 0 16px rgba(46,134,193,.08), inset 0 4px 12px rgba(255,255,255,.2);
   z-index: 3;
   animation: centerBounce 2s ease-in-out infinite;
 }
@@ -216,7 +181,6 @@ body { display: flex; flex-direction: column; }
   50% { transform: scale(1.08); opacity: .85; }
 }
 
-/* Orbiting dots */
 .orbit-dot-1 {
   position: absolute;
   width: 12px;
@@ -253,7 +217,6 @@ body { display: flex; flex-direction: column; }
   to { transform: rotate(-360deg) translateX(75px) translateY(-4px); }
 }
 
-/* Loading text */
 .loading-brand {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
@@ -266,10 +229,7 @@ body { display: flex; flex-direction: column; }
   animation: fadeUp .8s ease;
 }
 
-.loading-brand em {
-  font-style: normal;
-  color: var(--sky);
-}
+.loading-brand em { font-style: normal; color: var(--sky); }
 
 .loading-sub {
   font-size: .58rem;
@@ -288,7 +248,6 @@ body { display: flex; flex-direction: column; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Progress bar */
 .loading-progress {
   width: 220px;
   height: 3px;
@@ -318,7 +277,6 @@ body { display: flex; flex-direction: column; }
   100% { left: 100%; }
 }
 
-/* Status */
 .loading-status {
   font-family: 'Courier New', monospace;
   font-size: .68rem;
@@ -334,10 +292,7 @@ body { display: flex; flex-direction: column; }
   gap: 10px;
 }
 
-.loading-status .step-indicator {
-  display: flex;
-  gap: 5px;
-}
+.loading-status .step-indicator { display: flex; gap: 5px; }
 
 .loading-status .step-indicator span {
   width: 6px;
@@ -358,7 +313,6 @@ body { display: flex; flex-direction: column; }
   50% { opacity: .5; }
 }
 
-/* Corner decorations */
 .corner-deco {
   position: absolute;
   width: 60px;
@@ -393,7 +347,6 @@ body { display: flex; flex-direction: column; }
   50% { opacity: 1; }
 }
 
-/* Particles */
 .particles-bg {
   position: absolute;
   inset: 0;
@@ -413,16 +366,10 @@ body { display: flex; flex-direction: column; }
 }
 
 @keyframes particleFloat {
-  0% {
-    transform: translateY(100vh) scale(0);
-    opacity: 0;
-  }
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
   10% { opacity: .8; }
   90% { opacity: .8; }
-  100% {
-    transform: translateY(-50px) scale(1);
-    opacity: 0;
-  }
+  100% { transform: translateY(-50px) scale(1); opacity: 0; }
 }
 
 /* ============================================
@@ -454,42 +401,18 @@ body { display: flex; flex-direction: column; }
   background-size: 200% 100%;
 }
 
-@keyframes slideBar {
-  to { background-position: 200% 0; }
-}
+@keyframes slideBar { to { background-position: 200% 0; } }
 
-.top-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  min-width: 0;
-}
+.top-left { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; }
 
-.term-dots {
-  display: flex;
-  gap: 6px;
-  flex-shrink: 0;
-}
+.term-dots { display: flex; gap: 6px; flex-shrink: 0; }
 
-.term-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
+.term-dot { width: 12px; height: 12px; border-radius: 50%; }
 .term-dot.red { background: #FF5F56; }
 .term-dot.yellow { background: #FFBD2E; }
 .term-dot.green { background: #27C93F; }
 
-.top-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
-  min-width: 0;
-  flex-wrap: wrap;
-}
+.top-info { display: flex; align-items: center; gap: 20px; flex: 1; min-width: 0; flex-wrap: wrap; }
 
 .top-info-item {
   display: flex;
@@ -508,12 +431,7 @@ body { display: flex; flex-direction: column; }
   letter-spacing: .5px;
 }
 
-.term-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
+.term-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
 .status-badge {
   display: flex;
@@ -578,9 +496,7 @@ body { display: flex; flex-direction: column; }
   min-height: 0;
 }
 
-/* ============================================
-   INFO PANEL
-============================================ */
+/* INFO PANEL */
 .info-panel {
   background: #fff;
   border-right: 1px solid var(--border);
@@ -619,11 +535,7 @@ body { display: flex; flex-direction: column; }
   background: var(--sky);
 }
 
-/* Verified visual */
-.verified-visual {
-  text-align: center;
-  padding: 14px 0;
-}
+.verified-visual { text-align: center; padding: 14px 0; }
 
 .verified-icon {
   width: 90px;
@@ -636,9 +548,7 @@ body { display: flex; flex-direction: column; }
   justify-content: center;
   font-size: 2.4rem;
   color: #fff;
-  box-shadow: 
-    0 15px 40px rgba(46,134,193,.4),
-    0 0 0 8px rgba(46,134,193,.1);
+  box-shadow: 0 15px 40px rgba(46,134,193,.4), 0 0 0 8px rgba(46,134,193,.1);
   position: relative;
   animation: verifiedPulse 2s ease-in-out infinite;
 }
@@ -657,9 +567,7 @@ body { display: flex; flex-direction: column; }
   animation: rotateRing 20s linear infinite;
 }
 
-@keyframes rotateRing {
-  to { transform: rotate(360deg); }
-}
+@keyframes rotateRing { to { transform: rotate(360deg); } }
 
 .verified-visual h2 {
   font-family: 'Bebas Neue', sans-serif;
@@ -675,7 +583,6 @@ body { display: flex; flex-direction: column; }
   line-height: 1.5;
 }
 
-/* Info rows */
 .info-row {
   display: flex;
   align-items: flex-start;
@@ -746,7 +653,6 @@ body { display: flex; flex-direction: column; }
   border-color: #28A745;
 }
 
-/* Action buttons */
 .action-btn {
   width: 100%;
   padding: 13px;
@@ -789,7 +695,6 @@ body { display: flex; flex-direction: column; }
   box-shadow: 0 12px 30px rgba(46,134,193,.5);
 }
 
-/* Brand footer */
 .panel-brand {
   text-align: center;
   padding-top: 20px;
@@ -831,7 +736,7 @@ body { display: flex; flex-direction: column; }
    VIEWER
 ============================================ */
 .viewer {
-  background: var(--light);
+  background: #525659;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -847,6 +752,7 @@ body { display: flex; flex-direction: column; }
   gap: 12px;
   font-size: .72rem;
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 .viewer-header i { color: var(--sky); }
@@ -860,10 +766,7 @@ body { display: flex; flex-direction: column; }
 
 .viewer-header .spacer { flex: 1; }
 
-.viewer-header .zoom-controls {
-  display: flex;
-  gap: 5px;
-}
+.viewer-header .zoom-controls { display: flex; gap: 5px; }
 
 .zoom-btn {
   width: 30px;
@@ -886,13 +789,107 @@ body { display: flex; flex-direction: column; }
   color: #fff;
 }
 
-.viewer iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-  background: #fff;
+/* ============================================
+   PDF VIEWER (PDF.js)
+============================================ */
+#pdfViewer {
   flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #525659;
+  padding: 20px 0;
+  position: relative;
+}
+
+#pdfViewer::-webkit-scrollbar { width: 10px; }
+#pdfViewer::-webkit-scrollbar-track { background: rgba(0,0,0,.2); }
+#pdfViewer::-webkit-scrollbar-thumb { background: var(--sky); border-radius: 5px; }
+
+#pdfViewer canvas {
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+  margin: 0 auto 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  background: #fff;
+}
+
+.pdf-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.pdf-loading i {
+  font-size: 3rem;
+  color: var(--sky);
+  animation: spinIcon 1.5s linear infinite;
+}
+
+@keyframes spinIcon { to { transform: rotate(360deg); } }
+
+.pdf-loading p {
+  font-size: .85rem;
+  letter-spacing: 1px;
+  opacity: .8;
+}
+
+.pdf-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  gap: 16px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.pdf-error i {
+  font-size: 4rem;
+  color: var(--sky);
+  opacity: .3;
+}
+
+.pdf-error h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.pdf-error p {
+  font-size: .82rem;
+  opacity: .7;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.pdf-error a {
+  background: var(--sky);
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: .25s;
+}
+
+.pdf-error a:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(46,134,193,.4);
 }
 
 /* ============================================
@@ -918,9 +915,7 @@ body { display: flex; flex-direction: column; }
   border-radius: 20px;
   padding: 46px 36px;
   text-align: center;
-  box-shadow: 
-    0 30px 70px rgba(11,37,69,.15),
-    0 0 0 1px var(--border);
+  box-shadow: 0 30px 70px rgba(11,37,69,.15), 0 0 0 1px var(--border);
   animation: cardIn .5s ease;
   border-top: 5px solid #DC3545;
 }
@@ -986,9 +981,7 @@ body { display: flex; flex-direction: column; }
   font-weight: 700;
 }
 
-/* ============================================
-   TOAST
-============================================ */
+/* TOAST */
 .toast {
   position: fixed;
   bottom: 26px;
@@ -1012,53 +1005,25 @@ body { display: flex; flex-direction: column; }
   border: 1.5px solid var(--sky);
 }
 
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+.toast.show { opacity: 1; transform: translateY(0); }
 .toast i { color: var(--sky); }
 
-/* ============================================
-   RESPONSIVE
-============================================ */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .main { grid-template-columns: 1fr; }
-  .info-panel {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    max-height: 50vh;
-  }
+  .info-panel { border-right: none; border-bottom: 1px solid var(--border); max-height: 50vh; }
   .viewer { min-height: 50vh; }
 }
 
 @media (max-width: 640px) {
-  .verify-mark {
-    width: 220px;
-    height: 220px;
-    margin-bottom: 30px;
-  }
-  .verify-center {
-    width: 80px;
-    height: 80px;
-  }
+  .verify-mark { width: 220px; height: 220px; margin-bottom: 30px; }
+  .verify-center { width: 80px; height: 80px; }
   .verify-center i { font-size: 1.8rem; }
   .hex-ring { width: 160px; height: 160px; }
   .hex-ring-inner { width: 120px; height: 120px; }
-  .orbit-dot-1 { animation: orbit1mobile 4s linear infinite; }
-  @keyframes orbit1mobile {
-    from { transform: rotate(0deg) translateX(80px) translateY(-6px); }
-    to { transform: rotate(360deg) translateX(80px) translateY(-6px); }
-  }
-  .orbit-dot-2 { animation: orbit2mobile 6s linear infinite; }
-  @keyframes orbit2mobile {
-    from { transform: rotate(0deg) translateX(60px) translateY(-4px); }
-    to { transform: rotate(-360deg) translateX(60px) translateY(-4px); }
-  }
   .loading-brand { font-size: 1.4rem; letter-spacing: 3px; }
   .loading-sub { font-size: .5rem; letter-spacing: 4px; }
   .corner-deco { width: 40px; height: 40px; }
-  
   .top-info { display: none; }
   .info-panel, .viewer-header { padding: 16px; }
   .status-badge span:not(.dot) { display: none; }
@@ -1068,31 +1033,25 @@ body { display: flex; flex-direction: column; }
 </head>
 <body>
 
-<!-- ============================================
-     LOADING SCREEN
-============================================ -->
+<!-- LOADING SCREEN -->
 <div class="loading-screen" id="loadingScreen">
 
-  <!-- Corner decorations -->
   <div class="corner-deco tl"></div>
   <div class="corner-deco tr"></div>
   <div class="corner-deco bl"></div>
   <div class="corner-deco br"></div>
 
-  <!-- Hexagonal grid -->
   <div class="hex-grid">
     <svg width="100%" height="100%">
       <defs>
         <pattern id="hexPattern" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
-          <polygon points="30,2 55,15 55,41 30,54 5,41 5,15" 
-                   fill="none" stroke="rgba(46,134,193,.4)" stroke-width="1"/>
+          <polygon points="30,2 55,15 55,41 30,54 5,41 5,15" fill="none" stroke="rgba(46,134,193,.4)" stroke-width="1"/>
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#hexPattern)"/>
     </svg>
   </div>
 
-  <!-- Data streams -->
   <div class="data-streams">
     <div class="stream-line"></div>
     <div class="stream-line"></div>
@@ -1101,12 +1060,9 @@ body { display: flex; flex-direction: column; }
     <div class="stream-line"></div>
   </div>
 
-  <!-- Particles -->
   <div class="particles-bg" id="particlesBg"></div>
 
-  <!-- Center mark -->
   <div class="verify-mark">
-
     <div class="pulse-wave"></div>
     <div class="pulse-wave"></div>
     <div class="pulse-wave"></div>
@@ -1130,10 +1086,8 @@ body { display: flex; flex-direction: column; }
     <div class="verify-center">
       <i class="fas fa-shield-alt"></i>
     </div>
-
   </div>
 
-  <!-- Loading text -->
   <div class="loading-brand">IMPERIAL <em>ENTERPRISES</em></div>
   <div class="loading-sub">Sports Goods · Sialkot</div>
 
@@ -1150,12 +1104,9 @@ body { display: flex; flex-direction: column; }
 
 </div>
 
-<!-- ============================================
-     MAIN CONTAINER
-============================================ -->
+<!-- MAIN CONTAINER -->
 <div id="mainContainer" style="display: none; height: 100vh; flex-direction: column;">
 
-  <!-- TOP BAR -->
   <div class="top-bar">
     <div class="top-left">
       <div class="term-dots">
@@ -1193,10 +1144,8 @@ body { display: flex; flex-direction: column; }
     </div>
   </div>
 
-  <!-- MAIN SPLIT -->
   <div class="main">
 
-    <!-- LEFT: INFO -->
     <aside class="info-panel">
 
       <div class="panel-section">
@@ -1273,7 +1222,6 @@ body { display: flex; flex-direction: column; }
 
     </aside>
 
-    <!-- RIGHT: VIEWER -->
     <div class="viewer">
       <div class="viewer-header">
         <i class="fas fa-file-pdf"></i>
@@ -1285,7 +1233,14 @@ body { display: flex; flex-direction: column; }
           <button class="zoom-btn" onclick="zoomDoc(1)"><i class="fas fa-plus"></i></button>
         </div>
       </div>
-      <iframe id="docFrame" src="about:blank" title="Document"></iframe>
+
+      <!-- ✅ PDF.js viewer container -->
+      <div id="pdfViewer">
+        <div class="pdf-loading">
+          <i class="fas fa-circle-notch"></i>
+          <p>Loading PDF...</p>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1299,8 +1254,7 @@ body { display: flex; flex-direction: column; }
       <i class="fas fa-times"></i>
     </div>
     <h1>INVALID <em>DOCUMENT</em></h1>
-    <p>This document cannot be verified.<br>
-       The serial number or file reference is missing.</p>
+    <p>This document cannot be verified.<br>The serial number or file reference is missing.</p>
     <div class="brand">IMPERIAL ENTERPRISES</div>
     <div class="brand-sub">Sports Goods · Since 2008</div>
   </div>
@@ -1314,6 +1268,13 @@ body { display: flex; flex-direction: column; }
 
 <script>
 /* ============================================
+   PDF.js Setup
+============================================ */
+if (typeof pdfjsLib !== 'undefined') {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+/* ============================================
    PARSE URL
 ============================================ */
 const params = new URLSearchParams(window.location.search);
@@ -1321,32 +1282,28 @@ const serial = params.get('serial');
 const file = params.get('file');
 const type = params.get('type');
 
+let currentPdf = null;
+let currentZoom = 1.0;
+
 /* ============================================
-   LOADING STEPS ANIMATION
+   LOADING ANIMATION
 ============================================ */
 function animateLoadingSteps() {
   const steps = document.querySelectorAll('.loading-status .step-indicator span');
   let currentStep = 0;
-  
   const interval = setInterval(() => {
     steps.forEach(s => s.classList.remove('active'));
     if (currentStep < steps.length) {
       steps[currentStep].classList.add('active');
       currentStep++;
     }
-    if (currentStep >= steps.length) {
-      clearInterval(interval);
-    }
+    if (currentStep >= steps.length) clearInterval(interval);
   }, 800);
 }
 
-/* ============================================
-   FLOATING PARTICLES
-============================================ */
 function createParticles() {
   const container = document.getElementById('particlesBg');
   if (!container) return;
-  
   for (let i = 0; i < 20; i++) {
     const p = document.createElement('div');
     p.className = 'particle-bg';
@@ -1355,6 +1312,62 @@ function createParticles() {
     p.style.animationDelay = (Math.random() * 5) + 's';
     p.style.width = p.style.height = (Math.random() * 3 + 2) + 'px';
     container.appendChild(p);
+  }
+}
+
+/* ============================================
+   RENDER PDF WITH PDF.js
+============================================ */
+async function renderPDF(filePath) {
+  const viewer = document.getElementById('pdfViewer');
+  
+  try {
+    const loadingTask = pdfjsLib.getDocument(filePath);
+    const pdf = await loadingTask.promise;
+    currentPdf = pdf;
+    
+    viewer.innerHTML = '';
+    await renderAllPages();
+    
+  } catch (error) {
+    console.error('PDF Error:', error);
+    viewer.innerHTML = `
+      <div class="pdf-error">
+        <i class="fas fa-file-pdf"></i>
+        <h3>PDF Cannot Be Displayed</h3>
+        <p>The PDF file could not be loaded. Please download it to view.</p>
+        <a href="${filePath}" download>
+          <i class="fas fa-download"></i> Download PDF
+        </a>
+      </div>
+    `;
+  }
+}
+
+async function renderAllPages() {
+  if (!currentPdf) return;
+  const viewer = document.getElementById('pdfViewer');
+  viewer.innerHTML = '';
+  
+  const containerWidth = viewer.clientWidth - 40;
+  
+  for (let pageNum = 1; pageNum <= currentPdf.numPages; pageNum++) {
+    const page = await currentPdf.getPage(pageNum);
+    const viewport = page.getViewport({ scale: 1 });
+    const scale = (containerWidth / viewport.width) * currentZoom;
+    const scaledViewport = page.getViewport({ scale: scale });
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = scaledViewport.width;
+    canvas.height = scaledViewport.height;
+    
+    viewer.appendChild(canvas);
+    
+    const context = canvas.getContext('2d');
+    await page.render({
+      canvasContext: context,
+      viewport: scaledViewport
+    }).promise;
   }
 }
 
@@ -1381,7 +1394,10 @@ if (serial && file) {
     document.getElementById('fileName').textContent = file;
 
     const pdfPath = `letters/${file}`;
-    document.getElementById('docFrame').src = pdfPath;
+    
+    // ✅ Render PDF with PDF.js
+    renderPDF(pdfPath);
+    
     document.getElementById('downloadBtn').href = pdfPath;
     document.getElementById('downloadBtn2').href = pdfPath;
 
@@ -1406,9 +1422,6 @@ function getCurrentTime() {
   return `${String(d.getDate()).padStart(2,'0')} ${months[d.getMonth()]} · ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
 }
 
-/* ============================================
-   COPY SERIAL
-============================================ */
 function copySerial() {
   if (!serial) return;
   navigator.clipboard.writeText(serial).then(() => {
@@ -1423,9 +1436,6 @@ function copySerial() {
   });
 }
 
-/* ============================================
-   SHARE WHATSAPP
-============================================ */
 function shareWhatsApp() {
   const msg = encodeURIComponent(
     `✅ VERIFIED DOCUMENT\n\nSerial: ${serial}\nType: ${formatType(type)}\nIssued by: Imperial Enterprises\n\nVerify: ${window.location.href}`
@@ -1433,9 +1443,6 @@ function shareWhatsApp() {
   window.open(`https://wa.me/?text=${msg}`, '_blank');
 }
 
-/* ============================================
-   TOAST
-============================================ */
 let toastTimer;
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -1445,14 +1452,11 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-/* ============================================
-   ZOOM
-============================================ */
-let zoomLevel = 100;
 function zoomDoc(dir) {
-  if (dir === 0) zoomLevel = 100;
-  else zoomLevel = Math.max(50, Math.min(200, zoomLevel + dir * 25));
-  showToast('Zoom: ' + zoomLevel + '%');
+  if (dir === 0) currentZoom = 1.0;
+  else currentZoom = Math.max(0.5, Math.min(2.0, currentZoom + dir * 0.25));
+  showToast('Zoom: ' + Math.round(currentZoom * 100) + '%');
+  if (currentPdf) renderAllPages();
 }
 </script>
 
