@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperial Enterprises State Co — Salary Slip</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{ box-sizing:border-box; }
+
+body{
+    margin:0;
+    background:#eeeeee;
+    color:#111;
+    font-family:'Poppins', Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* GENERATOR PANEL */
+.generator{
+    width:100%;
+    max-width:1180px;
+    margin:30px auto;
+    background:#fff;
+    padding:30px;
+    border:1px solid #0B2545;
+}
+
+.generator-header{
+    border-bottom:4px solid #0B2545;
+    padding-bottom:18px;
+    margin-bottom:25px;
+}
+
+.generator-header h1{
+    margin:0;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:30px;
+    letter-spacing:2px;
+    color:#0B2545;
+}
+
+.generator-header p{
+    margin:6px 0 0;
+    color:#555;
+    font-size:13px;
+    font-weight:500;
+}
+
+.form-section{ margin-bottom:25px; }
+
+.form-section-title{
+    background:#0B2545;
+    color:#fff;
+    padding:11px 14px;
+    font-size:12px;
+    letter-spacing:1.5px;
+    font-weight:700;
+    font-family:'IBM Plex Mono', monospace;
+    margin-bottom:15px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.field{ display:flex; flex-direction:column; }
+
+.field label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    font-weight:600;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    color:#0B2545;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    border:1px solid #aaa;
+    padding:10px;
+    font-size:13px;
+    outline:none;
+    background:#fff;
+    font-family:'Poppins', sans-serif;
+    font-weight:500;
+    color:#111;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{ border:1px solid #2E86C1; box-shadow:0 0 0 3px rgba(46,134,193,.1); }
+
+.field textarea{ resize:vertical; min-height:70px; }
+
+.full{ grid-column:1/-1; }
+
+.buttons{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:25px;
+}
+
+button{
+    border:none;
+    padding:13px 22px;
+    cursor:pointer;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    border-radius:6px;
+    transition:.25s;
+}
+
+button:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.12); }
+
+.generate{ background:#0B2545; color:#fff; }
+.generate:hover{ background:#1B4F72; }
+.clear{ background:#ddd; color:#111; }
+.print{ background:#2E86C1; color:#fff; margin-top:20px; }
+
+#salarySlip{ display:none; }
+
+/* ==================================================
+   SALARY SLIP — LANDSCAPE A4
+================================================== */
+.salary-paper{
+    width:297mm;
+    height:210mm;
+    background:#fff;
+    margin:20px auto;
+    padding:8mm 10mm;
+    box-shadow:0 5px 25px rgba(0,0,0,.15);
+    position:relative;
+    font-family:'Poppins', sans-serif;
+    overflow:hidden;
+    border-top:6px solid #0B2545;
+}
+
+/* WATERMARK */
+.watermark{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:180mm;
+    height:180mm;
+    opacity:0.05;
+    pointer-events:none;
+    z-index:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.watermark img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    filter:grayscale(100%);
+}
+
+.watermark .wm-fb{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:200px;
+    font-weight:900;
+    color:#0B2545;
+    display:none;
+    letter-spacing:-6px;
+}
+
+.salary-paper > *:not(.watermark){ position:relative; z-index:2; }
+
+/* HEADER */
+.company-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    padding-bottom:8px;
+    border-bottom:2.5px solid #0B2545;
+    margin-bottom:12px;
+}
+
+.company-header .brand-group{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex:1;
+}
+
+.logo-box{
+    width:110px;
+    height:110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.logo-box img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.company-name{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:2px;
+    line-height:1;
+    color:#0B2545;
+}
+
+.company-tagline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:4px;
+    color:#2E86C1;
+}
+
+.company-contact{
+    font-size:9.5px;
+    letter-spacing:0.3px;
+    color:#333;
+    line-height:1.5;
+    font-weight:500;
+}
+
+.slip-title{
+    text-align:right;
+    flex-shrink:0;
+}
+
+.slip-title h2{
+    margin:0;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#0B2545;
+    line-height:1;
+    background:linear-gradient(135deg,#0B2545,#2E86C1);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.slip-title span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:8px;
+    letter-spacing:2px;
+    display:block;
+    margin-top:2px;
+    font-weight:700;
+    text-transform:uppercase;
+    color:#2E86C1;
+}
+
+/* MAIN LANDSCAPE LAYOUT — 3 columns */
+.main-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr 1fr;
+    gap:12px;
+    margin-top:6px;
+}
+
+/* SECTION TITLES */
+.section-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:15px;
+    letter-spacing:2px;
+    color:#0B2545;
+    padding-bottom:3px;
+    border-bottom:1.5px solid #2E86C1;
+    margin-bottom:8px;
+}
+
+/* EMPLOYEE INFO — left panel */
+.employee-info{
+    border:1.5px solid #0B2545;
+    padding:10px 12px;
+    background:#F4F6F7;
+    border-radius:4px;
+}
+
+.info-item{
+    display:flex;
+    justify-content:space-between;
+    padding:4px 0;
+    border-bottom:1px dotted #999;
+    font-size:9.5px;
+    gap:8px;
+    align-items:baseline;
+}
+
+.info-item:last-child{ border-bottom:none; }
+
+.info-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:7.5px;
+    letter-spacing:.5px;
+    flex-shrink:0;
+    color:#2E86C1;
+}
+
+.info-value{
+    text-align:right;
+    word-break:break-word;
+    font-weight:600;
+    color:#0B2545;
+    font-size:9.5px;
+}
+
+/* EARNINGS + DEDUCTIONS stacked in center */
+.center-col{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.salary-box{
+    border:1.5px solid #0B2545;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.box-heading{
+    background:linear-gradient(135deg,#0B2545,#1B4F72);
+    color:#fff;
+    padding:6px 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.salary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:5px 12px;
+    border-bottom:1px solid #eee;
+    font-size:9.5px;
+    gap:8px;
+    font-weight:500;
+}
+
+.salary-row:last-child{ border-bottom:none; }
+
+.salary-row span:last-child{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700;
+    color:#0B2545;
+}
+
+.salary-row.total{
+    background:#0B2545;
+    color:#fff;
+    font-weight:800;
+    border-top:2px solid #0B2545;
+    font-size:10.5px;
+    padding:7px 12px;
+}
+
+.salary-row.total span:first-child{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:2px;
+}
+
+.salary-row.total span:last-child{
+    color:#fff;
+    font-size:11.5px;
+}
+
+/* RIGHT PANEL */
+.right-col{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+/* NET PAY */
+.net-pay{
+    background:linear-gradient(135deg,#0B2545,#2E86C1);
+    color:#fff;
+    padding:14px 18px;
+    border-radius:6px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(11,37,69,.25);
+}
+
+.net-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:9px;
+    letter-spacing:2.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.8);
+    margin-bottom:4px;
+}
+
+.net-value{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:36px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    line-height:1;
+}
+
+/* AMOUNT WORDS */
+.amount-words{
+    border:1.5px solid #0B2545;
+    border-radius:4px;
+    padding:8px 12px;
+    font-size:9.5px;
+    line-height:1.5;
+    background:#F4F6F7;
+}
+
+.amount-words strong{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:700;
+    color:#2E86C1;
+    display:block;
+    margin-bottom:2px;
+}
+
+.amount-words span{ font-weight:600; font-style:italic; color:#0B2545; }
+
+/* ATTENDANCE */
+.attendance{
+    border:1.5px solid #0B2545;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.attendance-title{
+    padding:6px 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+    border-bottom:1.5px solid #0B2545;
+    text-transform:uppercase;
+    background:linear-gradient(135deg,#0B2545,#1B4F72);
+    color:#fff;
+}
+
+.attendance-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+}
+
+.attendance-item{
+    padding:7px 6px;
+    text-align:center;
+    border-right:1px solid #eee;
+    border-bottom:1px solid #eee;
+}
+
+.attendance-item:nth-child(2n){ border-right:none; }
+.attendance-item:nth-child(3),.attendance-item:nth-child(4){ border-bottom:none; }
+
+.attendance-item small{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:7px;
+    color:#555;
+    margin-bottom:2px;
+    text-transform:uppercase;
+    letter-spacing:0.7px;
+    font-weight:600;
+}
+
+.attendance-item strong{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:18px;
+    font-weight:900;
+    color:#0B2545;
+    letter-spacing:.5px;
+}
+
+/* SIGNATURES */
+.slip-footer{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+    margin-top:14px;
+    padding-top:10px;
+    border-top:1.5px solid #0B2545;
+}
+
+.signature{
+    text-align:center;
+}
+
+.signature-line{
+    border-top:1.5px solid #0B2545;
+    padding-top:4px;
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-size:8px;
+    color:#0B2545;
+}
+
+.footer-bottom{
+    border-top:1.5px solid #2E86C1;
+    margin-top:8px;
+    padding-top:5px;
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:7.5px;
+    letter-spacing:0.8px;
+    font-weight:700;
+    text-transform:uppercase;
+    color:#2E86C1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .form-grid{ grid-template-columns:1fr; }
+    .salary-paper{ width:100%; height:auto; padding:20px; }
+    .company-header{ flex-direction:column; align-items:flex-start; }
+    .logo-box{ width:90px; height:90px; }
+    .main-grid{ grid-template-columns:1fr; }
+    .slip-footer{ grid-template-columns:1fr; }
+    .watermark{ width:120mm; height:120mm; }
+}
+
+/* ==================================================
+   PRINT — A4 LANDSCAPE
+================================================== */
+@media print{
+    @page{
+        size:A4 landscape;
+        margin:0;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    html, body{
+        background:#fff !important;
+        margin:0 !important;
+        padding:0 !important;
+        width:297mm !important;
+        height:210mm !important;
+        overflow:hidden !important;
+    }
+
+    .generator, .print-area, .no-print{
+        display:none !important;
+    }
+
+    #salarySlip{
+        display:block !important;
+        margin:0 !important;
+        padding:0 !important;
+    }
+
+    .salary-paper{
+        width:297mm !important;
+        height:210mm !important;
+        margin:0 !important;
+        padding:8mm 10mm !important;
+        box-shadow:none !important;
+        page-break-inside:avoid !important;
+        page-break-after:avoid !important;
+        overflow:hidden !important;
+        position:relative !important;
+        display:block !important;
+        background:#fff !important;
+        border-top:6px solid #0B2545 !important;
+    }
+
+    .watermark{ opacity:0.05 !important; display:flex !important; }
+
+    .company-header{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:space-between !important;
+        gap:18px !important;
+        padding-bottom:8px !important;
+        border-bottom:2.5px solid #0B2545 !important;
+    }
+
+    .company-header .brand-group{
+        display:flex !important;
+        align-items:center !important;
+        gap:16px !important;
+        flex:1 !important;
+    }
+
+    .logo-box{ width:110px !important; height:110px !important; }
+
+    .main-grid{
+        display:grid !important;
+        grid-template-columns:1fr 1.5fr 1fr !important;
+        gap:12px !important;
+    }
+
+    .box-heading,
+    .net-pay,
+    .attendance-title{
+        background:#0B2545 !important;
+        color:#fff !important;
+    }
+
+    .salary-row.total{
+        background:#0B2545 !important;
+        color:#fff !important;
+    }
+
+    .slip-footer{
+        display:grid !important;
+        grid-template-columns:1fr 1fr 1fr !important;
+        gap:20px !important;
+    }
+
+    .footer-bottom{
+        display:flex !important;
+        justify-content:space-between !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     GENERATOR
+========================= -->
+<div class="generator">
+
+    <div class="generator-header">
+        <h1>IMPERIAL ENTERPRISES STATE CO</h1>
+        <p>Professional Salary Slip Generator — Landscape A4</p>
+    </div>
+
+    <!-- EMPLOYEE -->
+    <div class="form-section">
+        <div class="form-section-title">EMPLOYEE INFORMATION</div>
+        <div class="form-grid">
+            <div class="field"><label>Employee Name</label><input id="employeeName" placeholder="Enter employee name"></div>
+            <div class="field"><label>Employee ID</label><input id="employeeId" placeholder="IESC-001"></div>
+            <div class="field"><label>Designation</label><input id="designation" placeholder="Designation"></div>
+            <div class="field"><label>Department</label><input id="department" placeholder="Department"></div>
+            <div class="field"><label>Salary Month</label><input id="salaryMonth" type="month"></div>
+            <div class="field"><label>Pay Date</label><input id="payDate" type="date"></div>
+            <div class="field"><label>Joining Date</label><input id="joiningDate" type="date"></div>
+            <div class="field"><label>Payment Method</label>
+                <select id="paymentMethod">
+                    <option>Bank Transfer</option>
+                    <option>Cash</option>
+                    <option>Cheque</option>
+                </select>
+            </div>
+            <div class="field"><label>Contact</label><input id="contact" placeholder="Phone number"></div>
+        </div>
+    </div>
+
+    <!-- EARNINGS -->
+    <div class="form-section">
+        <div class="form-section-title">EARNINGS</div>
+        <div class="form-grid">
+            <div class="field"><label>Basic Salary (PKR)</label><input id="basicSalary" type="number" value="0"></div>
+            <div class="field"><label>House Allowance</label><input id="houseAllowance" type="number" value="0"></div>
+            <div class="field"><label>Medical Allowance</label><input id="medicalAllowance" type="number" value="0"></div>
+            <div class="field"><label>Transport Allowance</label><input id="transportAllowance" type="number" value="0"></div>
+            <div class="field"><label>Other Allowance</label><input id="otherAllowance" type="number" value="0"></div>
+            <div class="field"><label>Overtime Pay</label><input id="overtimePay" type="number" value="0"></div>
+        </div>
+    </div>
+
+    <!-- DEDUCTIONS -->
+    <div class="form-section">
+        <div class="form-section-title">DEDUCTIONS</div>
+        <div class="form-grid">
+            <div class="field"><label>Advance</label><input id="advance" type="number" value="0"></div>
+            <div class="field"><label>Loan</label><input id="loan" type="number" value="0"></div>
+            <div class="field"><label>Tax</label><input id="tax" type="number" value="0"></div>
+            <div class="field"><label>Absence Deduction</label><input id="absenceDeduction" type="number" value="0"></div>
+            <div class="field"><label>Other Deduction</label><input id="otherDeduction" type="number" value="0"></div>
+            <div class="field"><label>Working Days</label><input id="workingDays" type="number" value="26"></div>
+            <div class="field"><label>Present Days</label><input id="presentDays" type="number" value="26"></div>
+            <div class="field"><label>Overtime Hours</label><input id="overtimeHours" type="number" value="0"></div>
+            <div class="field full"><label>Notes / Description</label><textarea id="notes" placeholder="Optional notes"></textarea></div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="clear" onclick="clearForm()">Clear</button>
+        <button class="generate" onclick="generateSlip()">Generate Salary Slip</button>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SALARY SLIP — LANDSCAPE
+========================= -->
+<div id="salarySlip">
+<div class="salary-paper">
+
+    <div class="watermark">
+        <img src="logo.png" alt=""
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="wm-fb">IESC</span>
+    </div>
+
+    <!-- HEADER -->
+    <div class="company-header">
+        <div class="brand-group">
+            <div class="logo-box">
+                <img src="logo.png" alt="Imperial Enterprises"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <span style="display:none;font-family:'Bebas Neue',sans-serif;font-weight:900;font-size:44px;color:#0B2545;">IESC</span>
+            </div>
+            <div>
+                <div class="company-name">IMPERIAL ENTERPRISES STATE CO</div>
+                <div class="company-tagline">Manufacturer · Exporter · Importer · Since 2008</div>
+                <div class="company-contact">
+                    Gunjianwali Kallan, Sialkot, Pakistan · Tel: +92 52 3511245<br>
+                    Mobile: +92 333 4729999 · Email: iesc@imperialenterprisesstateco.com
+                </div>
+            </div>
+        </div>
+
+        <div class="slip-title">
+            <h2>SALARY SLIP</h2>
+            <span>Official Payroll Document</span>
+        </div>
+    </div>
+
+    <!-- MAIN GRID — 3 COLUMNS -->
+    <div class="main-grid">
+
+        <!-- LEFT — EMPLOYEE INFO -->
+        <div class="left-col">
+            <div class="section-title">EMPLOYEE INFORMATION</div>
+            <div class="employee-info">
+                <div class="info-item"><span class="info-label">Employee Name</span><span class="info-value" id="outEmployeeName">—</span></div>
+                <div class="info-item"><span class="info-label">Employee ID</span><span class="info-value" id="outEmployeeId">—</span></div>
+                <div class="info-item"><span class="info-label">Designation</span><span class="info-value" id="outDesignation">—</span></div>
+                <div class="info-item"><span class="info-label">Department</span><span class="info-value" id="outDepartment">—</span></div>
+                <div class="info-item"><span class="info-label">Salary Month</span><span class="info-value" id="outSalaryMonth">—</span></div>
+                <div class="info-item"><span class="info-label">Pay Date</span><span class="info-value" id="outPayDate">—</span></div>
+                <div class="info-item"><span class="info-label">Joining Date</span><span class="info-value" id="outJoiningDate">—</span></div>
+                <div class="info-item"><span class="info-label">Payment Method</span><span class="info-value" id="outPaymentMethod">—</span></div>
+                <div class="info-item"><span class="info-label">Contact</span><span class="info-value" id="outContact">—</span></div>
+            </div>
+        </div>
+
+        <!-- CENTER — EARNINGS + DEDUCTIONS -->
+        <div class="center-col">
+            <div class="salary-box">
+                <div class="box-heading">EARNINGS</div>
+                <div class="salary-row"><span>Basic Salary</span><span id="outBasic">PKR 0</span></div>
+                <div class="salary-row"><span>House Allowance</span><span id="outHouse">PKR 0</span></div>
+                <div class="salary-row"><span>Medical Allowance</span><span id="outMedical">PKR 0</span></div>
+                <div class="salary-row"><span>Transport Allowance</span><span id="outTransport">PKR 0</span></div>
+                <div class="salary-row"><span>Other Allowance</span><span id="outOtherAllowance">PKR 0</span></div>
+                <div class="salary-row"><span>Overtime Pay</span><span id="outOvertime">PKR 0</span></div>
+                <div class="salary-row total"><span>GROSS SALARY</span><span id="outGross">PKR 0</span></div>
+            </div>
+
+            <div class="salary-box">
+                <div class="box-heading">DEDUCTIONS</div>
+                <div class="salary-row"><span>Advance</span><span id="outAdvance">PKR 0</span></div>
+                <div class="salary-row"><span>Loan</span><span id="outLoan">PKR 0</span></div>
+                <div class="salary-row"><span>Tax</span><span id="outTax">PKR 0</span></div>
+                <div class="salary-row"><span>Absence Deduction</span><span id="outAbsence">PKR 0</span></div>
+                <div class="salary-row"><span>Other Deduction</span><span id="outOtherDeduction">PKR 0</span></div>
+                <div class="salary-row total"><span>TOTAL DEDUCTIONS</span><span id="outDeductions">PKR 0</span></div>
+            </div>
+        </div>
+
+        <!-- RIGHT — NET PAY + WORDS + ATTENDANCE -->
+        <div class="right-col">
+            <div class="net-pay">
+                <div class="net-label">NET SALARY PAYABLE</div>
+                <div class="net-value" id="outNet">PKR 0</div>
+            </div>
+
+            <div class="amount-words">
+                <strong>Amount in Words:</strong>
+                <span id="outWords">Pakistani Rupees Zero Only</span>
+            </div>
+
+            <div class="attendance">
+                <div class="attendance-title">ATTENDANCE SUMMARY</div>
+                <div class="attendance-grid">
+                    <div class="attendance-item"><small>Working Days</small><strong id="outWorkingDays">0</strong></div>
+                    <div class="attendance-item"><small>Present Days</small><strong id="outPresentDays">0</strong></div>
+                    <div class="attendance-item"><small>Absent Days</small><strong id="outAbsentDays">0</strong></div>
+                    <div class="attendance-item"><small>Overtime Hours</small><strong id="outOvertimeHours">0</strong></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NOTES -->
+    <div id="notesSection" style="display:none;margin-top:10px;border:1.5px solid #0B2545;padding:8px 12px;font-size:9.5px;border-radius:4px;background:#F4F6F7;">
+        <strong style="font-family:'IBM Plex Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:1px;color:#2E86C1;">Notes:</strong>
+        <span id="outNotes" style="font-weight:600;font-style:italic;color:#0B2545;"></span>
+    </div>
+
+    <!-- SIGNATURES -->
+    <div class="slip-footer">
+        <div class="signature"><div class="signature-line">Employee Signature</div></div>
+        <div class="signature"><div class="signature-line">Prepared By</div></div>
+        <div class="signature"><div class="signature-line">Authorized Signature / Stamp</div></div>
+    </div>
+
+    <div class="footer-bottom">
+        <span>IMPERIAL ENTERPRISES STATE CO</span>
+        <span>Salary Slip · Confidential</span>
+    </div>
+
+</div>
+</div>
+
+
+<!-- PRINT BUTTON -->
+<div class="print-area" style="text-align:center;margin:20px;">
+    <button class="print" onclick="window.print()">Print / Save as PDF (Landscape)</button>
+</div>
+
+
+<script>
+
+function value(id){ return document.getElementById(id).value || ""; }
+function number(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function money(amount){
+    return "PKR " + amount.toLocaleString("en-PK",{
+        minimumFractionDigits:0,
+        maximumFractionDigits:0
+    });
+}
+function output(id,text){ document.getElementById(id).textContent = text || "—"; }
+
+function numberToWords(num){
+    num = Math.floor(num);
+    if(num === 0) return "Pakistani Rupees Zero Only";
+
+    const ones = ["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+    const tens = ["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+
+    function convert(n){
+        if(n < 20) return ones[n];
+        if(n < 100) return tens[Math.floor(n/10)] + (n%10 ? " " + ones[n%10] : "");
+        if(n < 1000) return ones[Math.floor(n/100)] + " Hundred" + (n%100 ? " " + convert(n%100) : "");
+        if(n < 100000) return convert(Math.floor(n/1000)) + " Thousand" + (n%1000 ? " " + convert(n%1000) : "");
+        if(n < 10000000) return convert(Math.floor(n/100000)) + " Lakh" + (n%100000 ? " " + convert(n%100000) : "");
+        return convert(Math.floor(n/10000000)) + " Crore" + (n%10000000 ? " " + convert(n%10000000) : "");
+    }
+    return "Pakistani Rupees " + convert(num) + " Only";
+}
+
+function generateSlip(){
+    output("outEmployeeName", value("employeeName"));
+    output("outEmployeeId", value("employeeId"));
+    output("outDesignation", value("designation"));
+    output("outDepartment", value("department"));
+    output("outSalaryMonth", value("salaryMonth"));
+    output("outPayDate", value("payDate"));
+    output("outJoiningDate", value("joiningDate"));
+    output("outPaymentMethod", value("paymentMethod"));
+    output("outContact", value("contact"));
+
+    const basic = number("basicSalary");
+    const house = number("houseAllowance");
+    const medical = number("medicalAllowance");
+    const transport = number("transportAllowance");
+    const otherAllowance = number("otherAllowance");
+    const overtime = number("overtimePay");
+
+    const gross = basic + house + medical + transport + otherAllowance + overtime;
+
+    output("outBasic", money(basic));
+    output("outHouse", money(house));
+    output("outMedical", money(medical));
+    output("outTransport", money(transport));
+    output("outOtherAllowance", money(otherAllowance));
+    output("outOvertime", money(overtime));
+    output("outGross", money(gross));
+
+    const advance = number("advance");
+    const loan = number("loan");
+    const tax = number("tax");
+    const absence = number("absenceDeduction");
+    const otherDeduction = number("otherDeduction");
+
+    const deductions = advance + loan + tax + absence + otherDeduction;
+    const net = Math.max(0, gross - deductions);
+
+    output("outAdvance", money(advance));
+    output("outLoan", money(loan));
+    output("outTax", money(tax));
+    output("outAbsence", money(absence));
+    output("outOtherDeduction", money(otherDeduction));
+    output("outDeductions", money(deductions));
+
+    output("outNet", money(net));
+    output("outWords", numberToWords(net));
+
+    const working = number("workingDays");
+    const present = number("presentDays");
+    const overtimeHours = number("overtimeHours");
+    const absent = Math.max(0, working - present);
+
+    output("outWorkingDays", working);
+    output("outPresentDays", present);
+    output("outAbsentDays", absent);
+    output("outOvertimeHours", overtimeHours);
+
+    const notes = value("notes");
+    if(notes.trim() !== ""){
+        document.getElementById("notesSection").style.display = "block";
+        output("outNotes", notes);
+    } else {
+        document.getElementById("notesSection").style.display = "none";
+    }
+
+    document.getElementById("salarySlip").style.display = "block";
+    document.getElementById("salarySlip").scrollIntoView({behavior:"smooth"});
+}
+
+function clearForm(){
+    document.querySelectorAll(".generator input, .generator textarea").forEach(function(input){
+        if(input.type === "number") input.value = 0;
+        else input.value = "";
+    });
+    document.getElementById("paymentMethod").value = "Bank Transfer";
+    document.getElementById("workingDays").value = 26;
+    document.getElementById("presentDays").value = 26;
+    document.getElementById("salarySlip").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
