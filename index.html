@@ -1052,10 +1052,10 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
 
 
 /* OUR STAFF */
-.staff-tabs{display:flex;justify-content:center;gap:12px;margin:30px 0}
+.staff-tabs{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:12px;margin:30px 0}
 .staff-tab{padding:12px 28px;border-radius:30px;background:#e8f4fd;color:#0B2545;font-weight:700;border:1px solid #d5e9f8}
 .staff-tab.active,.staff-tab:hover{background:#2E86C1;color:#fff}
-.staff-card{max-width:340px;margin:0 auto 60px;background:#fff;border-radius:18px;overflow:hidden;border:1px solid rgba(11,37,69,.08);box-shadow:0 15px 45px rgba(11,37,69,.1);cursor:pointer;transition:.3s}
+.staff-card{width:100%;max-width:340px;margin:0 0 35px;background:#fff;border-radius:18px;overflow:hidden;border:1px solid rgba(11,37,69,.08);box-shadow:0 15px 45px rgba(11,37,69,.1);cursor:pointer;transition:.3s}
 .staff-card:hover{transform:translateY(-7px);box-shadow:0 22px 55px rgba(11,37,69,.16)}
 .staff-card img{width:100%;height:300px;object-fit:cover;object-position:center top;background:#e8f4fd}
 .staff-card-info{padding:24px;text-align:center}
@@ -1482,12 +1482,19 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
         <p class="section-sub" style="margin:8px auto 0">The people helping Imperial Enterprises State Co move forward.</p></div>
       </div>
       <div class="staff-tabs" role="tablist" aria-label="Staff departments">
-        <button class="staff-tab active" onclick="go('staff-management')"><i class="fas fa-users-cog"></i> Management</button>
+        <button class="staff-tab active" onclick="go('staff-ceo')"><i class="fas fa-user-tie"></i> CEO &amp; Proprietor</button>
+        <button class="staff-tab" onclick="go('staff-management')"><i class="fas fa-users-cog"></i> Management</button>
       </div>
-      <article class="staff-card" onclick="go('staff-ameer')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go('staff-ameer')}">
-        <img src="ameer.jpg" alt="Ameer Ul Hassan" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e8f4fd/0B2545?text=Ameer+Ul+Hassan'">
-        <div class="staff-card-info"><h3>Ameer Ul Hassan</h3><p>Manager · Management</p><span class="view-all" style="justify-content:center;margin-top:14px">View Profile <i class="fas fa-arrow-right"></i></span></div>
-      </article>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:24px;align-items:stretch">
+        <article class="staff-card" onclick="go('staff-rashid')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go('staff-rashid')}">
+          <img src="rs1979p.png" alt="Rashid Siddique Rana" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e8f4fd/0B2545?text=Rashid+Siddique+Rana'">
+          <div class="staff-card-info"><h3>Rashid Siddique Rana</h3><p>CEO &amp; Proprietor</p><span class="view-all" style="justify-content:center;margin-top:14px">View Profile <i class="fas fa-arrow-right"></i></span></div>
+        </article>
+        <article class="staff-card" onclick="go('staff-ameer')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go('staff-ameer')}">
+          <img src="ameer.jpg" alt="Ameer Ul Hassan" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e8f4fd/0B2545?text=Ameer+Ul+Hassan'">
+          <div class="staff-card-info"><h3>Ameer Ul Hassan</h3><p>Manager · Management</p><span class="view-all" style="justify-content:center;margin-top:14px">View Profile <i class="fas fa-arrow-right"></i></span></div>
+        </article>
+      </div>
     </div>
   </section>
 </div>
@@ -1525,6 +1532,38 @@ button{font-family:'Poppins',sans-serif;cursor:pointer;border:none}
           <div class="role"><i class="fas fa-user-tie"></i> Manager</div>
           <p>Ameer Ul Hassan is part of the management team at Imperial Enterprises State Co.</p>
         </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- CEO & PROPRIETOR PROFILE: SEPARATE PAGE -->
+<div class="page" id="page-staff-ceo">
+  <div class="inner-header" style="background-image:url('factory.png');">
+    <h1>CEO &amp; Proprietor</h1><p>Home / Our Staff / CEO &amp; Proprietor</p>
+  </div>
+  <section class="section" style="background:var(--light);padding-top:25px">
+    <div class="container">
+      <button class="btn btn-outline" onclick="go('staff')"><i class="fas fa-arrow-left"></i> Back to Our Staff</button>
+      <div class="section-head"><div><div class="section-title">CEO &amp; <span class="accent">PROPRIETOR</span></div></div></div>
+      <article class="staff-card" onclick="go('staff-rashid')" tabindex="0">
+        <img src="rs1979p.png" alt="Rashid Siddique Rana" onerror="this.onerror=null;this.src='https://placehold.co/600x600/e8f4fd/0B2545?text=Rashid+Siddique+Rana'">
+        <div class="staff-card-info"><h3>Rashid Siddique Rana</h3><p>CEO &amp; Proprietor</p><span class="view-all" style="justify-content:center;margin-top:14px">View Profile <i class="fas fa-arrow-right"></i></span></div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-staff-rashid">
+  <div class="inner-header" style="background-image:url('factory.png');">
+    <h1>CEO Profile</h1><p>Home / Our Staff / CEO &amp; Proprietor / Rashid Siddique Rana</p>
+  </div>
+  <section class="section" style="background:var(--light);padding-top:25px">
+    <div class="container">
+      <button class="btn btn-outline" onclick="go('staff-ceo')"><i class="fas fa-arrow-left"></i> Back to CEO &amp; Proprietor</button>
+      <article class="staff-profile">
+        <div class="staff-profile-photo"><img src="rs1979p.png" alt="Rashid Siddique Rana" onerror="this.onerror=null;this.src='https://placehold.co/700x900/e8f4fd/0B2545?text=Rashid+Siddique+Rana'"></div>
+        <div class="staff-profile-info"><span class="eyebrow">Our Leadership</span><h2>Rashid Siddique Rana</h2><div class="role"><i class="fas fa-user-tie"></i> CEO &amp; Proprietor</div><p>Leading Imperial Enterprises State Co. as CEO and Proprietor.</p></div>
       </article>
     </div>
   </section>
